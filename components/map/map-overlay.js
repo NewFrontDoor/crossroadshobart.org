@@ -22,7 +22,7 @@ const MapOverlay = ({details}) => {
               sx={{
                 padding: '60px',
                 textAlign: 'center',
-                width: '200px',
+                width: '350px',
                 svg: {
                   margin: 'auto',
                   height: '50px',
