@@ -9,15 +9,18 @@ const homeSection = {
   position: 'relative',
   zIndex: '1',
   display: 'grid',
-  gridTemplateColumns: ['1fr', '3fr 3fr'],
-  gridTemplateRows: ['200px 200px', '1fr 1fr 1fr'],
-  height: [null, 'calc(100vh - 300px)'],
-  color: 'text'
+  gridAutoFlow: 'columns',
+  gridTemplateColumns: ['1fr', '3fr 1fr 2fr'],
+  gridTemplateRows: ['200px 200px', '1fr'],
+  height: '550px',
+  color: 'text',
+  backgroundColor: 'background'
 };
 
 const homeMapInner = {
-  gridColumn: ['1', '1/3'],
-  gridRow: ['1', '1/4']
+  gridColumn: ['1', '1/1'],
+  gridRow: ['1', '1/4'],
+  height: '550px'
 };
 
 const MapLayout = ({heading, actions, details, location}) => {

@@ -38,6 +38,7 @@ const HomeSide = props => {
           .height(550)
           .url()}
         sx={imageStyle}
+        loading="lazy"
       />
 
       <div sx={homeSectionInner}>

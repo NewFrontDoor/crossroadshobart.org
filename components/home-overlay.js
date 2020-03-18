@@ -38,6 +38,7 @@ const HomeOverlay = props => {
           .height(550)
           .url()}
         sx={imageStyle}
+        loading="lazy"
       />
       <div sx={homeSection}>
         <div sx={homeSectionInner}>

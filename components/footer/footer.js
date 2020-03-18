@@ -11,7 +11,7 @@ const Footer = () => {
         paddingTop: '2rem',
         paddingBottom: '2rem',
         backgroundColor: 'dark',
-        color: 'background'
+        color: 'white'
       }}
     >
       <div
@@ -23,7 +23,8 @@ const Footer = () => {
           textAlign: 'center'
         }}
       >
-        <p>© 2019 New Front Door</p>
+        <p>© Crossroads Presbyterian Church 2017</p>
+        <p>25 Tasma St, North Hobart TAS 7000, Australia</p>
       </div>
     </div>
   );

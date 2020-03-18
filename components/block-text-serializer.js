@@ -9,6 +9,7 @@ import GridBlock from './grid-block';
 import Card from './card-grid-item';
 import HorizontalCard from './horizontal-card-grid-item';
 import PeopleCard from './people-card-grid-item';
+import HomeCard from './home-card-grid-item';
 import Overlay from './overlay-grid-item';
 import PropTypes from 'prop-types';
 
@@ -61,6 +62,8 @@ const GridBlockSerializer = ({node: {header, blocks, columns, style}}) => {
           <HorizontalCard {...data} />
         ) : style === 'people' ? (
           <PeopleCard {...data} />
+        ) : style === 'homecard' ? (
+          <HomeCard {...data} />
         ) : (
           ''
         )

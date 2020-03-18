@@ -8,7 +8,7 @@ const gridSx = ({gap, columns, columnRawValue, margin, style, padding}) => ({
   padding: '0 30px',
   gap,
   padding,
-  margin,
+  margin: `${style === 'homecard' ? '' : margin}`,
   backgroundColor: `${style === 'people' ? '#efede4' : ''}`,
   gridTemplateColumns: [
     columns,
@@ -30,7 +30,11 @@ const GridBlock = ({
 }) => {
   return (
     <div sx={gridSx({gap, columns, columnRawValue, margin, padding, style})}>
-      {header && <div sx={{gridColumn: '1/-1', textAlign: 'center', marginTop: '40px'}}><Styled.h1 sx={{fontWeight: 400}}>{header}</Styled.h1></div>}
+      {header && (
+        <div sx={{gridColumn: '1/-1', textAlign: 'center', marginTop: '40px'}}>
+          <Styled.h1 sx={{fontWeight: 400}}>{header}</Styled.h1>
+        </div>
+      )}
       {items.map(item => {
         return item.id ? (
           <div key={item._key} /> // A blank item, with a name on the property 'id'
