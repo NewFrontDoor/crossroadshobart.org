@@ -20,7 +20,7 @@ const SermonGrid = ({sermons, series, config}) => {
   const latestSermon = {
     ...sermons[0],
     id: sermons[0]._id,
-    link: `talks/${sermons[0].slug}`,
+    link: `sermons/${sermons[0].slug}`,
     image: urlFor(sermons[0].image)
       .width(300)
       .height(300)

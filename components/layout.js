@@ -7,7 +7,7 @@ import Footer from './footer/footer';
 import Head from 'next/head';
 import urlFor from '../lib/sanityImg';
 
-const Layout = ({menuData, mainData, children}) => {
+const Layout = ({menuData, mainData, wide, children}) => {
   return (
     <div>
       <Head>
@@ -18,7 +18,7 @@ const Layout = ({menuData, mainData, children}) => {
         sx={{
           gridTemplateColumns: '1fr 1000px 1fr',
           gridTemplateRows: '310px 60px 1fr',
-          backgroundImage: `url(${urlFor(mainData.backgroundImage).url()})`,
+          backgroundImage: `url(${urlFor(menuData.backgroundImage).url()})`,
           backgroundSize: 'contain',
           backgroundRepeatY: 'repeat'
         }}
@@ -27,7 +27,7 @@ const Layout = ({menuData, mainData, children}) => {
           sx={{
             gridColumn: '1/4',
             gridRow: '1/3',
-            backgroundImage: `url(${urlFor(mainData.mainImage).url()}), url(${mainData.mainImageSmall})`,
+            backgroundImage: `url(${urlFor(mainData.mainImage).auto('format').url()}), url(${mainData.mainImageSmall})`,
             width: '100%',
             height: '100%',
             backgroundSize: 'cover',
@@ -39,7 +39,7 @@ const Layout = ({menuData, mainData, children}) => {
             gridColumn: '2/3',
             gridRow: '2/4',
             backgroundColor: 'white',
-            padding: '90px 155px 100px 155px'
+            padding: `90px ${wide ? '20px' : '155px'} 100px ${wide ? '20px' : '155px'}`
           }}
         >
           <Styled.h1>{mainData.title}</Styled.h1>

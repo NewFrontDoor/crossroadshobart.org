@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import {jsx} from 'theme-ui';
 import {SermonTable} from '@newfrontdoor/sermon';
-import HomeBlock from '../../components/block-text-serializer';
+import SanityBlock from '../../components/block-text-serializer';
 import Layout from '../../components/layout';
 import {fetchQuery} from '../../lib/sanity';
 import Link from '../../components/link';
@@ -19,46 +19,35 @@ const headers = [
   {heading: 'Title', key: 'title', searchable: true},
   {heading: 'Series', key: 'series', searchable: true},
   {heading: 'Bible Passage(s)', key: 'book', searchable: true},
-  {heading: 'Speaker', key: 'preacher', searchable: true},
-  {heading: 'Date Preached', key: 'date', searchable: false},
+  {heading: 'Speaker', key: 'speaker', searchable: true},
+  {heading: 'Date Preached', key: 'preachedDate', searchable: false}
 ];
 
-const main = {
-  maxWidth: '1200px',
-  padding: '20px',
-  margin: 'auto',
-  fontSize: '1.15em',
-  lineHeight: '1.8',
-  color: '#444444'
-};
-
-const Sermons = ({pageData, sermonData, seriesData, menuData, defaultData}) => {
+const Sermons = ({mainData, sermonData, seriesData, menuData, defaultData}) => {
   const sermonsSubset = sermonData.slice(0, 10);
   return (
-    <Layout menuData={menuData} mainData={pageData}>
-      <article sx={main}>
-        <HomeBlock blocks={pageData.body} />
-        <SermonGrid
-          sermons={sermonData}
-          series={seriesData}
-          config={defaultData}
-        />
-        <SermonTable
-          sermons={sermonsSubset}
-          headers={headers}
-          columnHide={[5]}
-          sermonDirectory="talks"
-          renderLink={(directory, slug, title) => (
-            <Link link={`${directory}/${slug}`}>{title}</Link>
-          )}
-        />
-      </article>
+    <Layout menuData={menuData} mainData={mainData} wide>
+      <SanityBlock blocks={mainData.body} />
+      <SermonGrid
+        sermons={sermonData}
+        series={seriesData}
+        config={defaultData}
+      />
+      <SermonTable
+        sermons={sermonsSubset}
+        headers={headers}
+        columnHide={[5]}
+        sermonDirectory="sermons"
+        renderLink={(directory, slug, title) => (
+          <Link link={`${directory}/${slug}`}>{title}</Link>
+        )}
+      />
     </Layout>
   );
 };
 
 Sermons.propTypes = {
-  pageData: PropTypes.object.isRequired,
+  mainData: PropTypes.object.isRequired,
   sermonData: PropTypes.array.isRequired,
   seriesData: PropTypes.array,
   menuData: PropTypes.object.isRequired,
@@ -69,7 +58,7 @@ Sermons.getInitialProps = async () => {
   const results = await fetchQuery(
     `{
         "menuData": ${menuQuery},
-        "pageData": ${pageQuery('talks')},
+        "mainData": ${pageQuery('sermons')},
         "sermonData": ${sermonQuery},
         "seriesData": ${seriesQuery},
         "defaultData": ${defaultQuery}

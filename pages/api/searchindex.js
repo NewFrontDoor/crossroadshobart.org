@@ -44,7 +44,7 @@ const sermonQuery = `
     title,
     _id,
     preachedDate,
-    "preacher": preacher->name,
+    "speaker": speaker->name,
     "series": series->title,
     "book": passage,
     "image": series->image,
@@ -57,7 +57,7 @@ const sermonflex = new FlexSearch({
   coresearch,
   doc: {
     id: '_id',
-    field: ['title', 'preacher', 'book', 'series']
+    field: ['title', 'speaker', 'book', 'series']
   }
 });
 

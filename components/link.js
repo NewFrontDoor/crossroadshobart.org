@@ -16,9 +16,9 @@ const pageLookup = link => {
 
   switch (link) {
     case '':
-    case 'talks':
+    case 'sermons':
     case 'search':
-    case 'all-talks':
+    case 'all-sermons':
       return `/${link}`;
     default:
       return '/[slug]';

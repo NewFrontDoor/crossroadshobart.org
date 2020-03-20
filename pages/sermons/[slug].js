@@ -5,7 +5,7 @@ import {StyledPlayer} from '@newfrontdoor/audio-player';
 import Layout from '../../components/layout';
 import Link from '../../components/link';
 import {fetchQuery} from '../../lib/sanity';
-import {menuQuery, sermonSlugQuery} from '../../lib/queries';
+import {mainQuery, menuQuery, sermonSlugQuery} from '../../lib/queries';
 
 const main = {
   maxWidth: '700px',
@@ -68,58 +68,44 @@ const returnMonth = number => {
   }
 };
 
-const SermonPage = ({sermonData, menuData}) => {
+const SermonPage = ({sermonData, menuData, mainData}) => {
   const datePreached = new Date(sermonData.preachedDate);
 
   return (
-    <Layout menuData={menuData} mainData={sermonData}>
-      <article sx={main}>
-        <div
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gridTemplateRows: 'auto',
-            gap: '20px'
-          }}
-        >
-          <div>
-            <Styled.h3>{sermonData.title}</Styled.h3>
-            <StyledPlayer
-              hasPlaybackSpeed
-              hasBorder
-              isInvert
-              highlight="#c4dbf6"
-              background="#4c516d"
-              base="#4c516d"
-              audio={sermonData.url}
-              width="300px"
-            />
-            <Link download link={sermonData.url}>
-              Download
-            </Link>
-            <p sx={{fontSize: '16px', lineHeight: '18px'}}>
-              Speaker - {sermonData.preacher}
-            </p>
-            <p sx={{fontSize: '16px', lineHeight: '18px'}}>
-              Series - {sermonData.series}
-            </p>
-            {datePreached && (
-              <p
-                sx={{fontSize: '16px', lineHeight: '18px', fontStyle: 'italic'}}
-              >
-                {`${returnDay(datePreached.getDay())}, ${returnMonth(
-                  datePreached.getMonth()
-                )} ${datePreached.getDate()}, ${datePreached.getFullYear()}`}
-              </p>
-            )}
-          </div>
-        </div>
-      </article>
+    <Layout menuData={menuData} mainData={mainData}>
+      <Styled.h3>{sermonData.title}</Styled.h3>
+      <StyledPlayer
+        hasPlaybackSpeed
+        hasBorder
+        isInvert
+        highlight="#c4dbf6"
+        background="#4c516d"
+        base="#4c516d"
+        audio={sermonData.url}
+        width="300px"
+      />
+      <Link download link={sermonData.url}>
+        Download
+      </Link>
+      <p sx={{fontSize: '16px', lineHeight: '18px'}}>
+        Speaker - {sermonData.speaker}
+      </p>
+      <p sx={{fontSize: '16px', lineHeight: '18px'}}>
+        Series - {sermonData.series}
+      </p>
+      {datePreached && (
+        <p sx={{fontSize: '16px', lineHeight: '18px', fontStyle: 'italic'}}>
+          {`${returnDay(datePreached.getDay())}, ${returnMonth(
+            datePreached.getMonth()
+          )} ${datePreached.getDate()}, ${datePreached.getFullYear()}`}
+        </p>
+      )}
     </Layout>
   );
 };
 
 SermonPage.propTypes = {
+  mainData: PropTypes.object.isRequired,
   menuData: PropTypes.object.isRequired,
   sermonData: PropTypes.array
 };
@@ -127,6 +113,7 @@ SermonPage.propTypes = {
 SermonPage.getInitialProps = async ({query}) => {
   const results = await fetchQuery(
     `{
+        "mainData": ${mainQuery},
         "menuData": ${menuQuery},
         "sermonData": ${sermonSlugQuery(query.slug)}
     }`

@@ -10,8 +10,8 @@ const SermonLayout = ({sermons}) => {
         <SermonBlock
           key={sermon.id}
           title={sermon.title}
-          date={sermon.date}
-          preacher={sermon.preacher}
+          preachedDate={sermon.preachedDate}
+          speaker={sermon.speaker}
           series={sermon.series}
           book={sermon.book}
         />
@@ -24,8 +24,8 @@ SermonLayout.propTypes = {
   sermons: PropTypes.arrayOf(
     PropTypes.shape({
       book: PropTypes.string,
-      date: PropTypes.string,
-      preacher: PropTypes.string,
+      preachedDate: PropTypes.string,
+      speaker: PropTypes.string,
       series: PropTypes.string,
       title: PropTypes.string
     })

@@ -32,7 +32,7 @@ const actionButton = {
   padding: '10px 15px 10px 15px'
 };
 
-const SermonBlock = ({title, date, preacher, series, book}) => {
+const SermonBlock = ({title, preachedDate, speaker, series, book}) => {
   return (
     <div
       sx={{
@@ -62,8 +62,8 @@ const SermonBlock = ({title, date, preacher, series, book}) => {
         {title}
       </Styled.h2>
       <ul sx={listSx}>
-        <li>{date}</li>
-        <li>{preacher}</li>
+        <li>{preachedDate}</li>
+        <li>{speaker}</li>
         <li>{series}</li>
         <li>{book}</li>
       </ul>
@@ -81,16 +81,16 @@ const SermonBlock = ({title, date, preacher, series, book}) => {
 
 SermonBlock.propTypes = {
   book: PropTypes.string,
-  date: PropTypes.string,
-  preacher: PropTypes.string,
+  preachedDate: PropTypes.string,
+  speaker: PropTypes.string,
   series: PropTypes.string,
   title: PropTypes.string
 };
 
 SermonBlock.defaultProps = {
   book: null,
-  date: null,
-  preacher: null,
+  preachedDate: null,
+  speaker: null,
   series: null,
   title: null
 };
