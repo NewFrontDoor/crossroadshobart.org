@@ -8,7 +8,7 @@ import HomeBlock from '../../components/block-text-serializer';
 import Layout from '../../components/layout';
 import {fetchQuery} from '../../lib/sanity';
 import {pageQuery, menuQuery, sermonQuery} from '../../lib/queries';
-import {jsx, Styled} from 'theme-ui';
+import {jsx, Styled, Grid} from 'theme-ui';
 
 const fields = [
   {heading: 'Title', key: 'title', searchable: true},
@@ -22,19 +22,20 @@ const AllSermons = ({pageData, menuData, sermonData}) => {
   const [sermonsSubset, setSubset] = useState(sermonData);
 
   return (
-    <Layout menuData={menuData} mainData={pageData} wide>
+    <Layout wide menuData={menuData} mainData={pageData}>
       <HomeBlock blocks={pageData.body} />
-      <SermonFilter
-        dataCollection={sermonData}
-        setSubset={setSubset}
-        fields={fields}
-        debounceTime={500}
-        labels={{
-          searchbox: 'Filter sermons:',
-          checkbox: `use 'inclusive' mode`
-        }}
-      />
-
+      <Grid columns={2}>
+        <SermonFilter
+          dataCollection={sermonData}
+          setSubset={setSubset}
+          fields={fields}
+          debounceTime={500}
+          labels={{
+            searchbox: 'Filter sermons:',
+            checkbox: `use 'inclusive' mode`
+          }}
+        />
+      </Grid>
       <SermonTable
         sermons={sermonsSubset}
         headers={fields}

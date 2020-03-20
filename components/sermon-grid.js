@@ -21,17 +21,17 @@ const SermonGrid = ({sermons, series, config}) => {
     ...sermons[0],
     id: sermons[0]._id,
     link: `sermons/${sermons[0].slug}`,
-    image: urlFor(sermons[0].image)
-      .width(300)
-      .height(300)
+    image: urlFor(sermons[0]?.image ?? config?.image ?? undefined)
+      .width(200)
+      .height(200)
       .url()
   };
   const modseries = series.map(ind => {
     return {
       ...ind,
       image: urlFor(ind?.image ?? config?.image ?? undefined)
-        .width(300)
-        .height(300)
+        .width(200)
+        .height(200)
         .url()
     };
   });
@@ -43,7 +43,10 @@ const SermonGrid = ({sermons, series, config}) => {
         gap: [null, '5px 20px'],
         gridTemplateColumns: [null, 'repeat(4, 1fr)'],
         gridTemplateRows: [null, '50px auto'],
-        gridAutoFlow: 'column'
+        gridAutoFlow: 'column',
+        h2: {
+          fontSize: '26px'
+        }
       }}
     >
       <section
