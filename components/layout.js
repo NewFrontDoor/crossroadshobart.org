@@ -6,14 +6,16 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import Head from 'next/head';
 import urlFor from '../lib/sanityImg';
+import {Banner} from './banner';
 
-const Layout = ({menuData, mainData, wide, children}) => {
+const Layout = ({menuData, defaultData, mainData, wide, children}) => {
   return (
     <div>
       <Head>
         <title>{mainData.title} | Crossroads Hobart</title>
       </Head>
       <Header navlinks={menuData.menuitems} />
+      {defaultData.frontbanner && <Banner {...defaultData.frontbanner} />}
       <Grid
         sx={{
           gridTemplateColumns: '1fr 1000px 1fr',

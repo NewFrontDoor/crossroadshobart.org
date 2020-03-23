@@ -26,7 +26,7 @@ const headers = [
 const Sermons = ({mainData, sermonData, seriesData, menuData, defaultData}) => {
   const sermonsSubset = sermonData.slice(0, 10);
   return (
-    <Layout menuData={menuData} mainData={mainData} wide>
+    <Layout menuData={menuData} mainData={mainData} wide defaultData={defaultData}>
       <SanityBlock blocks={mainData.body} />
       <SermonGrid
         sermons={sermonData}

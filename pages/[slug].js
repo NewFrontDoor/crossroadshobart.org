@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import {fetchQuery} from '../lib/sanity';
 import SanityBlock from '../components/block-text-serializer';
 import Layout from '../components/layout';
-import {menuQuery, pageQuery} from '../lib/queries';
+import {menuQuery, pageQuery, defaultQuery} from '../lib/queries';
 
-const Page = ({menuData, mainData}) => {
+const Page = ({menuData, mainData, defaultData}) => {
   const {body} = mainData;
 
   return (
-    <Layout menuData={menuData} mainData={mainData}>
+    <Layout menuData={menuData} mainData={mainData} defaultData={defaultData}>
       <SanityBlock blocks={body} />
     </Layout>
   );
@@ -26,7 +26,8 @@ Page.getInitialProps = async ({query}) => {
   const results = await fetchQuery(
     `{
         "mainData": ${pageQuery(query.slug)},
-        "menuData": ${menuQuery}
+        "menuData": ${menuQuery},
+        "defaultData": ${defaultQuery}
     }`
   );
   return results;

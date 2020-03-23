@@ -5,7 +5,7 @@ import {StyledPlayer} from '@newfrontdoor/audio-player';
 import Layout from '../../components/layout';
 import Link from '../../components/link';
 import {fetchQuery} from '../../lib/sanity';
-import {mainQuery, menuQuery, sermonSlugQuery} from '../../lib/queries';
+import {mainQuery, menuQuery, defaultQuery, sermonSlugQuery} from '../../lib/queries';
 
 const main = {
   maxWidth: '700px',
@@ -68,11 +68,11 @@ const returnMonth = number => {
   }
 };
 
-const SermonPage = ({sermonData, menuData, mainData}) => {
+const SermonPage = ({sermonData, menuData, mainData, defaultData}) => {
   const datePreached = new Date(sermonData.preachedDate);
 
   return (
-    <Layout menuData={menuData} mainData={mainData}>
+    <Layout menuData={menuData} mainData={mainData} defaultData={defaultData}>
       <Styled.h3>{sermonData.title}</Styled.h3>
       <StyledPlayer
         hasPlaybackSpeed
@@ -115,7 +115,8 @@ SermonPage.getInitialProps = async ({query}) => {
     `{
         "mainData": ${mainQuery},
         "menuData": ${menuQuery},
-        "sermonData": ${sermonSlugQuery(query.slug)}
+        "sermonData": ${sermonSlugQuery(query.slug)},
+        "defaultData": ${defaultQuery}
     }`
   );
   return results;
