@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import {Styled, Text, jsx} from 'theme-ui';
+import {Styled, Text, jsx, Link as TULink} from 'theme-ui';
 import Link from './link';
 import urlFor from '../lib/sanityImg';
 import {Form, validation} from '@newfrontdoor/form';
@@ -50,8 +50,8 @@ const GridBlockSerializer = ({node: {header, blocks, columns, style}}) => {
       columnRawValue={(columns === undefined) | null ? 1 : columns}
       gap="40px"
       style={style}
-      margin="150px -155px 150px -155px"
-      padding="0 40px 150px 40px"
+      margin="150px -155px 0 -155px"
+      padding="0 40px 50px 40px"
       header={header}
       renderProp={(data, style) =>
         style === 'card' ? (
@@ -105,6 +105,33 @@ const ExternalLinkSerializer = ({mark, children}) => (
   <Link link={mark.href}>{children}</Link>
 );
 
+const InlineButtonSerializer = ({children, mark}) => {
+  console.log(mark)
+  const {action, link, style} = mark;
+  if (style === 'ghost') {
+    return <Link variant="ghost" sx={{marginLeft: '10px'}} link={link}>{children}</Link>;
+  }
+
+  if (style === 'warning') {
+    return <Link variant="warning" sx={{marginLeft: '10px'}} link={link}>{action}</Link>;
+  }
+
+  return <Link link={link} sx={{marginLeft: '10px'}} link={link}>{action}</Link>;
+};
+
+const ButtonSerializer = ({node}) => {
+  const {action, link, style} = node;
+  if (style === 'ghost') {
+    return <Link variant="ghost">{action}</Link>;
+  }
+
+  if (style === 'warning') {
+    return <Link variant="warning">{action}</Link>;
+  }
+
+  return <Link link={link}>{action}</Link>;
+};
+
 InternalLinkSerializer.propTypes = {
   children: PropTypes.array.isRequired,
   mark: PropTypes.shape({
@@ -138,6 +165,9 @@ const BlockRenderer = props => {
   if (style === 'blockquote')
     return <Text variant="pageBlurb">{props.children}</Text>;
 
+  if (style === 'warning')
+    return <Text variant="warning">{props.children}</Text>;
+
   // Fall back to default handling
   return BlockContent.defaultSerializers.types.block(props);
 };
@@ -157,12 +187,15 @@ const BlockText = ({blocks}) => {
           p: CustomStyleSerializer,
           form: FormSerializer,
           gridblock: GridBlockSerializer,
-          image: ImageSerializer
+          image: ImageSerializer,
+          button: ButtonSerializer,
+          inlineButton: ButtonSerializer
         },
         marks: {
           anchor: AnchorSerializer,
           internalLink: InternalLinkSerializer,
-          link: ExternalLinkSerializer
+          link: ExternalLinkSerializer,
+          inlineButton: InlineButtonSerializer
         }
       }}
     />

@@ -82,6 +82,30 @@ export default {
     fontFamily: 'body',
     fontWeight: 'body',
     lineHeight: 'body'
+  },
+  table: {
+    border: 'none',
+    borderLeft: '1px solid #eee',
+    borderRight: '1px solid #eee',
+    width: '100%',
+    borderCollapse: 'collapse',
+    textAlign: 'left',
+    thead: {
+      tr: {
+        backgroundColor: '#eee'
+      }
+    }
+  },
+  tr: {
+    ':nth-of-type(even)': {
+      backgroundColor: '#eee'
+    }
+  },
+  th: {
+    padding: '15px 5px'
+  },
+  td: {
+    padding: '15px 5px'
   }
 };
 

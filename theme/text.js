@@ -54,5 +54,11 @@ export default {
     fontWeight: 'body',
     lineHeight: 'body',
     color: 'text'
+  },
+  warning: {
+    fontFamily: 'body',
+    fontWeight: 'body',
+    lineHeight: 'body',
+    color: 'red'
   }
 };

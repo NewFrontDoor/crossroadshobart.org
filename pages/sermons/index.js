@@ -20,13 +20,23 @@ const headers = [
   {heading: 'Series', key: 'series', searchable: true},
   {heading: 'Bible Passage(s)', key: 'book', searchable: true},
   {heading: 'Speaker', key: 'speaker', searchable: true},
-  {heading: 'Date Preached', key: 'preachedDate', searchable: false}
+  {
+    heading: 'Date Preached',
+    key: 'preachedDate',
+    searchable: false,
+    hideable: true
+  }
 ];
 
 const Sermons = ({mainData, sermonData, seriesData, menuData, defaultData}) => {
   const sermonsSubset = sermonData.slice(0, 10);
   return (
-    <Layout menuData={menuData} mainData={mainData} wide defaultData={defaultData}>
+    <Layout
+      wide
+      menuData={menuData}
+      mainData={mainData}
+      defaultData={defaultData}
+    >
       <SanityBlock blocks={mainData.body} />
       <SermonGrid
         sermons={sermonData}

@@ -41,7 +41,7 @@ const Layout = ({menuData, defaultData, mainData, wide, children}) => {
             gridColumn: '2/3',
             gridRow: '2/4',
             backgroundColor: 'white',
-            padding: `90px ${wide ? '20px' : '155px'} 100px ${wide ? '20px' : '155px'}`
+            padding: `90px ${wide ? '20px' : '155px'}`
           }}
         >
           <Styled.h1>{mainData.title}</Styled.h1>

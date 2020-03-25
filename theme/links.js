@@ -8,6 +8,35 @@ export default {
       color: 'accent'
     }
   },
+  ghost: {
+    margin: 'auto',
+    textDecoration: 'none',
+    padding: '11px 23px',
+    border: '2px solid',
+    borderColor: 'gold',
+    color: 'gold',
+    display: 'inline-block',
+    width: 'fit-content',
+    ':hover': {
+      borderColor: 'gold',
+      backgroundColor: 'gold',
+      color: 'red'
+    }
+  },
+  warning: {
+    margin: 'auto',
+    textDecoration: 'none',
+    padding: '11px 23px',
+    border: '2px solid red',
+    color: 'red',
+    display: 'block',
+    width: 'fit-content',
+    ':hover': {
+      borderColor: 'red',
+      backgroundColor: 'red',
+      color: '#fff'
+    }
+  },
   rectangle: {
     padding: '11px 23px',
     border: '2px solid #52934f',

@@ -17,7 +17,7 @@ const imageStyle = {
 const homeSectionInner = {
   gridRow: '1',
   margin: '0 100px',
-  textAlign: 'left',
+  textAlign: 'center',
   verticalAlign: 'middle',
   gridColumn: '2/2'
 };
@@ -43,21 +43,7 @@ const HomeSide = props => {
 
       <div sx={homeSectionInner}>
         {heading && (
-          <Text
-            as="h2"
-            variant="homeH2"
-            sx={{
-              '::after': {
-                content: '""',
-                display: 'block',
-                width: '130px',
-                margin: 0,
-                marginTop: '20px',
-                borderBottom: '2px dotted',
-                borderColor: 'accent'
-              }
-            }}
-          >
+          <Text as="h2" variant="homeH2">
             {heading}
           </Text>
         )}
