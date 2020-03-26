@@ -6,7 +6,7 @@ import BlockText from './block-text-serializer';
 import {jsx, Styled} from 'theme-ui';
 
 const actionSx = {
-  margin: 'auto',
+  margin: [null, null, 'auto'],
   textDecoration: 'none',
   padding: '11px 23px',
   border: '2px solid #52934f',
@@ -19,11 +19,17 @@ const actionSx = {
 };
 
 const LinkWrapper = ({link, children}) =>
-  link ? <Link link={link}>{children}</Link> : children;
+  link ? (
+    <Link link={link} sx={{display: 'contents'}}>
+      {children}
+    </Link>
+  ) : (
+    children
+  );
 
 const Card = ({header, description, shortdescription, image, link, action}) => {
   return (
-    <div>
+    <>
       <LinkWrapper link={link}>
         <img
           src={urlFor(image)
@@ -33,29 +39,42 @@ const Card = ({header, description, shortdescription, image, link, action}) => {
           alt={header}
           sx={{
             width: '100%',
-            gridColumn: '1/1',
+            height: ['100%', '100%', 'auto'],
+            gridColumn: ['1/2', '1/2', '1/1'],
             margin: 'auto',
-            marginBottom: '40px'
+            marginBottom: '40px',
+            objectFit: 'cover',
+            gridRow: ['1/4', '1/4', '1/1']
           }}
         />
         <Styled.h3
           sx={{
-            gridColumn: '1/1',
+            gridColumn: ['2/3', '2/3', '1/1'],
             maxWidth: '100%',
-            textAlign: 'center',
-            margin: '0.5em'
+            textAlign: ['left', 'left', 'center'],
+            margin: [null, null, '0.5em']
           }}
         >
           {header}
         </Styled.h3>
       </LinkWrapper>
-      <p sx={{fontSize: '16px', color: 'black'}}>{description}</p>
+      <p
+        sx={{
+          fontSize: '16px',
+          color: 'black',
+          gridColumn: ['2/3', '2/3', '1/1'],
+          marginTop: [0, 0, null],
+          textAlign: ['left', 'left', 'center']
+        }}
+      >
+        {description}
+      </p>
       {shortdescription && <Styled.p>{shortdescription}</Styled.p>}
       {link && (
         <div
           sx={{
             display: 'flex',
-            gridColumn: '1/1',
+            gridColumn: ['2/3', '2/3', '1/1'],
             textAlign: 'center'
           }}
         >
@@ -64,7 +83,7 @@ const Card = ({header, description, shortdescription, image, link, action}) => {
           </Link>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

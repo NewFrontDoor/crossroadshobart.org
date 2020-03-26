@@ -10,7 +10,7 @@ export default {
     cursor: 'pointer'
   },
   homeH1: {
-    fontSize: ['36px', '42px'],
+    fontSize: ['32px', '42px'],
     fontWeight: '900',
     color: 'white',
     lineHeight: 1.15,
@@ -23,11 +23,11 @@ export default {
     }
   },
   homeH2: {
-    fontSize: '30px',
+    fontSize: ['32px', '30px'],
     fontWeight: '900',
     color: 'accent',
     lineHeight: 1.15,
-    marginBottom: '50px',
+    marginBottom: ['12px', '50px'],
     "::after": {
       content: '""',
       display: 'block',
@@ -38,16 +38,17 @@ export default {
     }
   },
   homeBlurb: {
-    fontSize: '30px',
+    fontSize: ['22px', '30px'],
     marginBottom: '35px',
     lineHeight: 1.3,
     textAlign: 'center'
   },
   pageBlurb: {
-    fontSize: '30px',
+    fontSize: ['22px', '30px'],
     marginBottom: '35px',
     lineHeight: 1.3,
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: ['0 1em 35px 1em', '0']
   },
   default: {
     fontFamily: 'body',

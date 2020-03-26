@@ -8,10 +8,11 @@ const gridSx = ({gap, columns, columnRawValue, margin, style, padding}) => ({
   padding: '0 30px',
   gap,
   padding,
-  margin: `${style === 'homecard' ? '' : margin}`,
+  margin: [0, 0, `${style === 'homecard' ? '' : margin}`],
   backgroundColor: `${style === 'people' ? '#efede4' : ''}`,
   gridTemplateColumns: [
-    columns,
+    null,
+    null,
     `repeat(${Math.round(columnRawValue / 2)}, 1fr)`,
     columns
   ]
@@ -43,7 +44,8 @@ const GridBlock = ({
             key={item._key}
             sx={{
               display: 'grid',
-              gridTemplateColumns: '1fr'
+              gridTemplateColumns: ['125px 1fr', '125px 1fr', '1fr'],
+              gridGap: ['0 20px', '0 20px', null]
             }}
           >
             {renderProp(item, style)}

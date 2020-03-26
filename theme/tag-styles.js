@@ -10,9 +10,9 @@ export default {
     fontFamily: 'heading',
     fontWeight: 'heading',
     color: 'accent',
-    mt: '0',
-    mb: '35',
-    fontSize: ['36px', '50px'],
+    mt: ['22px', '0'],
+    mb: '35px',
+    fontSize: ['32px', '50px'],
     lineHeight: '1.15',
     textAlign: 'center'
   },
@@ -30,7 +30,7 @@ export default {
     lineHeight: 1.15,
     marginBottom: '10px',
     "::after": {
-      content: '""',
+      content: [null, '""'],
       display: 'block',
       width: '130px',
       margin: '20px auto',

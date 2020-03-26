@@ -11,8 +11,8 @@ const homeSection = {
   display: 'grid',
   gridAutoFlow: 'columns',
   gridTemplateColumns: ['1fr', '3fr 1fr 2fr'],
-  gridTemplateRows: ['200px 200px', '1fr'],
-  height: '550px',
+  gridTemplateRows: [null, '1fr'],
+  height: [null, '550px'],
   color: 'text',
   backgroundColor: 'background'
 };
@@ -20,7 +20,7 @@ const homeSection = {
 const homeMapInner = {
   gridColumn: ['1', '1/1'],
   gridRow: ['1', '1/4'],
-  height: '550px'
+  height: ['300px', '550px']
 };
 
 const MapLayout = ({heading, actions, details, location}) => {

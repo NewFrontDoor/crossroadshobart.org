@@ -32,7 +32,7 @@ const homeSectionInner = {
 const HomeOverlay = props => {
   const {heading, blurb, background, isFirstPage} = props;
   return (
-    <Grid sx={{padding: '130px 0', height: '550px'}}>
+    <Grid sx={{padding: '130px 0', height: [null, '550px']}}>
       <img
         src={urlFor(background)
           .height(550)

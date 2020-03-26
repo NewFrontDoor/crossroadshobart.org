@@ -10,19 +10,19 @@ const navSx = isOpen => ({
   flex: '2 1 auto',
   listStyle: 'none',
   margin: '0',
-  alignItems: 'center',
+  alignItems: ['left', 'center'],
   display: [`${isOpen ? 'block' : 'none'}`, 'flex'],
   position: ['absolute', 'unset'],
-  top: '70px',
-  right: '0px',
-  border: ['#efefef 1px solid', 'none'],
-  padding: ['2px', 0],
-  borderRadius: '2px',
-  backgroundColor: ['background', 'none'],
+  top: '90px',
+  left: '0px',
+  padding: ['20px 80px 0 80px', 0],
+  backgroundColor: ['#63bc50CC', 'none'],
   color: ['text', 'inherit'],
-  width: ['auto', 'initial'],
+  width: ['100vw', 'initial'],
+  height: ['100vh', 'initial'],
   flexDirection: [null, 'row'],
-  justifyContent: [null, 'flex-end']
+  justifyContent: [null, 'flex-end'],
+  fontSize: ['30px', null]
 });
 
 const Navigation = ({navlinks}) => {

@@ -7,7 +7,7 @@ const HomeLayout = props => {
   const {background} = props;
 
   return (
-    <section sx={{height: '550px'}}>
+    <section>
       <img
         src={urlFor(background)
           .height(550)

@@ -51,7 +51,7 @@ const GridBlockSerializer = ({node: {header, blocks, columns, style}}) => {
       gap="40px"
       style={style}
       margin="150px -155px 0 -155px"
-      padding="0 40px 50px 40px"
+      padding={['0 10px 50px 10px', '0 40px 50px 40px']}
       header={header}
       renderProp={(data, style) =>
         style === 'card' ? (
@@ -106,17 +106,29 @@ const ExternalLinkSerializer = ({mark, children}) => (
 );
 
 const InlineButtonSerializer = ({children, mark}) => {
-  console.log(mark)
+  console.log(mark);
   const {action, link, style} = mark;
   if (style === 'ghost') {
-    return <Link variant="ghost" sx={{marginLeft: '10px'}} link={link}>{children}</Link>;
+    return (
+      <Link variant="ghost" sx={{marginLeft: '10px'}} link={link}>
+        {children}
+      </Link>
+    );
   }
 
   if (style === 'warning') {
-    return <Link variant="warning" sx={{marginLeft: '10px'}} link={link}>{action}</Link>;
+    return (
+      <Link variant="warning" sx={{marginLeft: '10px'}} link={link}>
+        {action}
+      </Link>
+    );
   }
 
-  return <Link link={link} sx={{marginLeft: '10px'}} link={link}>{action}</Link>;
+  return (
+    <Link link={link} sx={{marginLeft: '10px'}} link={link}>
+      {action}
+    </Link>
+  );
 };
 
 const ButtonSerializer = ({node}) => {

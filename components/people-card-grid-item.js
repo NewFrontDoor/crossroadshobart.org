@@ -6,16 +6,14 @@ import {jsx, Styled} from 'theme-ui';
 
 const PeopleCard = ({name, body, image}) => {
   return (
-    <div>
+    <>
       <div
         sx={{
-          gridColumn: '1/1',
-          width: '165px',
-          height: '165px',
-          margin: '0 auto 40px auto',
-          borderRadius: '50%',
-          border: '3px solid #63bc50',
-          overflow: 'hidden'
+          width: ['100%', '130px', '165px'],
+          height: [null, '130px', '165px'],
+          paddingBottom: ['100%', 0],
+          position: 'relative',
+          margin: 'auto'
         }}
       >
         <img
@@ -24,23 +22,36 @@ const PeopleCard = ({name, body, image}) => {
             .auto('format')
             .url()}
           alt={name}
+          sx={{
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            width: '100%',
+            height: '100%',
+            borderWidth: '4px',
+            borderColor: '#27ae60',
+            borderStyle: 'solid',
+            borderRadius: '50%'
+          }}
         />
       </div>
-      <Styled.h3
-        sx={{
-          gridColumn: '1/1',
-          maxWidth: '100%',
-          textAlign: 'center',
-          margin: '0.5em'
-        }}
-      >
-        {name}
-      </Styled.h3>
+      <div>
+        <Styled.h3
+          sx={{
+            gridColumn: '1/1',
+            maxWidth: '100%',
+            textAlign: ['left', 'center'],
+            margin: [null, '0.5em']
+          }}
+        >
+          {name}
+        </Styled.h3>
 
-      <div sx={{fontSize: '16px', color: 'text', textAlign: 'center'}}>
-        {body}
+        <div sx={{fontSize: '16px', color: 'text', textAlign: ['left', 'center']}}>
+          {body}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

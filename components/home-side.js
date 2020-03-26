@@ -7,19 +7,14 @@ import BlockText from './block-text-serializer';
 
 const imageStyle = {
   objectFit: 'cover',
-  position: 'absolute',
-  top: '0',
   width: '100%',
-  height: '100%',
-  gridColumn: '1/1'
+  height: [null, '100%']
 };
 
 const homeSectionInner = {
-  gridRow: '1',
-  margin: '0 100px',
+  margin: '100px 100px',
   textAlign: 'center',
-  verticalAlign: 'middle',
-  gridColumn: '2/2'
+  verticalAlign: 'middle'
 };
 
 const HomeSide = props => {
@@ -27,9 +22,8 @@ const HomeSide = props => {
   return (
     <Grid
       sx={{
-        padding: '130px 0',
         position: 'relative',
-        gridTemplateColumns: '2fr 2fr',
+        gridTemplateColumns: ['1fr', '1fr 1fr'],
         gap: '0'
       }}
     >

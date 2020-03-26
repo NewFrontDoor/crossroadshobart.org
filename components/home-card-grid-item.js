@@ -9,7 +9,7 @@ const HomeCard = ({header, description, image}) => {
   }
 
   return (
-    <div sx={{margin: '0'}}>
+    <>
       <img
         src={urlFor(image)
           .width(37)
@@ -19,16 +19,17 @@ const HomeCard = ({header, description, image}) => {
         sx={{
           height: '50px',
           gridColumn: '1/1',
+          gridRow: ['1/3', null],
           margin: 'auto',
-          marginBottom: '40px'
+          marginBottom: ['auto', '40px']
         }}
       />
       <Styled.h3
         sx={{
-          gridColumn: '1/1',
+          gridColumn: ['2/3', '1/1'],
           maxWidth: '100%',
           textAlign: 'center',
-          margin: '0.5em',
+          margin: [0, '0.5em'],
           '::after': {
             content: '""',
             border: 'none'
@@ -42,12 +43,13 @@ const HomeCard = ({header, description, image}) => {
           fontSize: '16px',
           color: 'white',
           maxWidth: '175px',
-          margin: 'auto'
+          margin: 'auto',
+          gridColumn: ['2/3', '1/1']
         }}
       >
         {description}
       </p>
-    </div>
+    </>
   );
 };
 

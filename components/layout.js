@@ -18,30 +18,37 @@ const Layout = ({menuData, defaultData, mainData, wide, children}) => {
       {defaultData.frontbanner && <Banner {...defaultData.frontbanner} />}
       <Grid
         sx={{
-          gridTemplateColumns: '1fr 1000px 1fr',
-          gridTemplateRows: '310px 60px 1fr',
+          gridTemplateColumns: ['1fr', '1fr 600px 1fr', '1fr 1000px 1fr'],
+          gridTemplateRows: [null, '310px 60px 1fr'],
           backgroundImage: `url(${urlFor(menuData.backgroundImage).url()})`,
           backgroundSize: 'contain',
-          backgroundRepeatY: 'repeat'
+          backgroundRepeatY: 'repeat',
+          gridGap: ['0', '16px']
         }}
       >
         <div
           sx={{
-            gridColumn: '1/4',
-            gridRow: '1/3',
-            backgroundImage: `url(${urlFor(mainData.mainImage).auto('format').url()}), url(${mainData.mainImageSmall})`,
+            gridColumn: [null, '1/4'],
+            gridRow: [null, '1/3'],
+            backgroundImage: `url(${urlFor(mainData.mainImage)
+              .auto('format')
+              .url()}), url(${mainData.mainImageSmall})`,
             width: '100%',
-            height: '100%',
+            height: ['200px', '100%'],
             backgroundSize: 'cover',
-            backgroundPosition: 'center -50px'
+            backgroundPosition: [null, 'center -50px']
           }}
         />
         <Container
           sx={{
-            gridColumn: '2/3',
-            gridRow: '2/4',
+            gridColumn: [null, '2/3'],
+            gridRow: [null, '2/4'],
             backgroundColor: 'white',
-            padding: `90px ${wide ? '20px' : '155px'}`
+            padding: [
+              '10px',
+              '90px 20px 0 20px',
+              `90px ${wide ? '20px' : '155px'} 0 ${wide ? '20px' : '155px'}`
+            ]
           }}
         >
           <Styled.h1>{mainData.title}</Styled.h1>
