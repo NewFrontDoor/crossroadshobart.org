@@ -22,7 +22,7 @@ const navSx = isOpen => ({
   height: ['100vh', 'initial'],
   flexDirection: [null, 'row'],
   justifyContent: [null, 'flex-end'],
-  fontSize: ['30px', null]
+  fontSize: ['30px', '16px']
 });
 
 const Navigation = ({navlinks}) => {
