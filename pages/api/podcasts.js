@@ -95,7 +95,7 @@ export default async (req, res) => {
         '@xmlns:itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
         channel: {
           ...podcastData,
-          url: []
+          item: []
         }
       }
     };
