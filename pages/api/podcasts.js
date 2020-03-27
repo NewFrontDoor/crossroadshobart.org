@@ -1,5 +1,6 @@
 import * as builder from 'xmlbuilder';
-import sanity from '../../lib/sanity';
+import {fetchQuery} from '../../lib/sanity';
+import {podcastQuery, sermonQuery} from '../../lib/queries';
 
 const buildFeedObject = ({
   title,
@@ -17,7 +18,7 @@ const buildFeedObject = ({
     link: {'#text': url},
     description: {'#text': description},
     enclosure: {
-      '@url': url,
+      '@url': `https://s3-ap-southeast-2.amazonaws.com/sermons.crossroadshobart.org/${url}`,
       '@type': 'audio/mpeg',
       '@length': filesize
     },
@@ -33,62 +34,14 @@ const buildFeedObject = ({
   };
 };
 
-const podcastQuery = `
-*[_type == "podcast"][0] {
-    title,
-    description,
-    language,
-    "link": "https://crossroadshobart.org",
-    "category": [
-        {"#text": "crossroads"},
-        {"#text": "gospel"}
-    ],
-    copyright,
-    "managingEditor": email + " (" + name + ")",
-    "webMaster": "info@newfrontdoor.org (New Front Door)",
-    "ttl": 300,
-    "itunes:subtitle": subtitle,
-    "itunes:category": {
-        '@text': category[0],
-         "itunes:category": category[1..2]{"@text": @}
-    },
-    "itunes:keywords": keywords,
-    "itunes:image": image->url,
-    "itunes:author": author,
-    "itunes:explicit": explicit,
-    "itunes:owner": {
-        "itunes:email": email,
-        "itunes:name": name
-    }
-}
-`;
-
-const sermonQuery = `
-    *[_type == "sermon"] {
-    "key": _id,
-    title,
-    _id,
-    "pubDate": _createdAt,
-    preachedDate,
-    description,
-    filesize,
-    duration,
-    "speaker": speaker->name,
-    "series": series->title,
-    passage,
-    "image": series->image,
-    "url": "https://s3-ap-southeast-2.amazonaws.com/sermons.crossroadshobart.org/" + file,
-    "slug": slug.current
-    } | order(preachedDate desc)
-    `;
-
 export default async (req, res) => {
   try {
-    const podcastData = await sanity.fetch(podcastQuery);
+    const results = await fetchQuery(`{
+        "podcastData": ${podcastQuery},
+        "sermonData": ${sermonQuery}
+    }`);
 
-    const sermonData = await sanity.fetch(sermonQuery);
-
-    const sermonItems = await sermonData.map(
+    const sermonItems = results.sermonData.map(
       item => item?.url && buildFeedObject(item)
     );
 
@@ -98,7 +51,7 @@ export default async (req, res) => {
         '@xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
         '@xmlns:itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
         channel: {
-          ...podcastData,
+          ...results.podcastData,
           pubDate: new Date().toUTCString(),
           lastBuildDate: new Date().toUTCString(),
           item: sermonItems
