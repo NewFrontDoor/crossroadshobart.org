@@ -102,7 +102,7 @@ export default async (req, res) => {
 
     for (const item of sermonData) {
       if (typeof item.url !== 'undefined') {
-        feedObject.rss.channel.url.push(buildFeedObject(item));
+        feedObject.rss.channel.item.push(buildFeedObject(item));
       }
     }
 
