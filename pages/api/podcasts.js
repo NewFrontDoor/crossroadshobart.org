@@ -1,5 +1,5 @@
 import * as builder from 'xmlbuilder';
-import {fetchQuery} from '../../lib/sanity';
+import sanity from '../../lib/sanity';
 
 const buildFeedObject = ({
   title,
@@ -32,10 +32,7 @@ const buildFeedObject = ({
   };
 };
 
-const Podcast = () => null;
-
-Podcast.getInitialProps = async ({res}) => {
-  const sermonQuery = `
+const sermonQuery = `
     *[_type == "sermon"] {
     "key": _id,
     title,
@@ -54,8 +51,9 @@ Podcast.getInitialProps = async ({res}) => {
     } | order(preachedDate desc)
     `;
 
+export default async (req, res) => {
   try {
-    const sermonData = await fetchQuery(sermonQuery);
+    const sermonData = await sanity.fetch(sermonQuery);
     const feedObject = {
       urlset: {
         '@xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
@@ -81,8 +79,6 @@ Podcast.getInitialProps = async ({res}) => {
 
     return;
   } catch (error) {
-    return {error: 404};
+    return {error: 404, value: error};
   }
 };
-
-export default Podcast;
