@@ -106,7 +106,6 @@ const ExternalLinkSerializer = ({mark, children}) => (
 );
 
 const InlineButtonSerializer = ({children, mark}) => {
-  console.log(mark);
   const {action, link, style} = mark;
   if (style === 'ghost') {
     return (

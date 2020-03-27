@@ -54,17 +54,13 @@ const HomeCard = ({header, description, image}) => {
 };
 
 HomeCard.propTypes = {
-  action: PropTypes.string,
   description: PropTypes.string,
   header: PropTypes.string.isRequired,
-  image: PropTypes.any,
-  link: PropTypes.string.isRequired
+  image: PropTypes.any
 };
 
 HomeCard.defaultProps = {
-  action: 'VIEW PAGE',
   description: null,
-  shortdescription: null,
   image: null
 };
 

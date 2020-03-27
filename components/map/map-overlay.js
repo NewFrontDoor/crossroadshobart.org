@@ -15,7 +15,6 @@ const MapOverlay = ({details}) => {
     <div sx={{display: 'contents'}}>
       {details.length > 0 &&
         details.map(detail => {
-          console.log(detail);
           return (
             <div
               key={detail.value}
@@ -44,7 +43,6 @@ const MapOverlay = ({details}) => {
 };
 
 MapOverlay.propTypes = {
-  actions: PropTypes.array.isRequired,
   details: PropTypes.array.isRequired,
   heading: PropTypes.string,
   lat: PropTypes.number.isRequired,

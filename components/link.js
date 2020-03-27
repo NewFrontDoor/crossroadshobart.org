@@ -27,14 +27,7 @@ const pageLookup = link => {
 
 const regex = /^(?!www\.|(?:http|ftp)s?:\/\/|[A-Za-z]:\\|\/\/|api|\/api).*/;
 
-const Link = ({
-  link = '',
-  children,
-  isBlank,
-  hasNoAnchor,
-  passedSx,
-  ...rest
-}) => {
+const Link = ({link, children, isBlank, hasNoAnchor, passedSx, ...rest}) => {
   if (isBlank) {
     rest.target = '_blank';
     rest.rel = 'noreferrer noopener';
@@ -62,10 +55,14 @@ const Link = ({
 Link.propTypes = {
   children: PropTypes.any,
   variant: PropTypes.string,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
   isBlank: PropTypes.bool,
   hasNoAnchor: PropTypes.bool,
   passedSx: PropTypes.object
+};
+
+Link.defaultProps = {
+  link: ''
 };
 
 export default Link;

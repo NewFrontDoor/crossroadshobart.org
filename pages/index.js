@@ -16,21 +16,51 @@ const Home = ({mainData, menuData, defaultData}) => {
     <div>
       <Head>
         <title>Home | Crossroads Hobart</title>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta
+          name="msapplication-config"
+          content="/favicons/browserconfig.xml"
+        />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <Header navlinks={menuData.menuitems} />
       {defaultData.frontbanner && <Banner {...defaultData.frontbanner} />}
       {content.map((segment, index) => {
         if (segment._type === 'LayoutSpacer') {
-          return <Spacer {...segment} />;
+          return <Spacer key={segment._id} {...segment} />;
         }
 
         if (segment.location) {
-          return <MapLayout key={'map' + index} {...segment} />;
+          return <MapLayout key={segment._id} {...segment} />;
         }
 
         return (
           <HomeLayout
-            key={segment.heading}
+            key={segment._id}
             {...segment}
             isFirstPage={index === 0}
           />
