@@ -4,6 +4,7 @@ import sanity from '../../lib/sanity';
 const buildFeedObject = ({
   title,
   url,
+  _id,
   filesize,
   description,
   pubDate,
@@ -21,16 +22,46 @@ const buildFeedObject = ({
       '@length': filesize
     },
     guid: {
-      '@isPermaLink': 'false',
-      '#text': url
+      '#text': _id
     },
-    pubDate: {'#text': pubDate.split('T')[0]},
+    pubDate: {'#text': new Date(pubDate).toUTCString()},
     'itunes:subtitle': {'#text': passage},
+    'itunes:explicit': {'#text': false},
     'itunes:summary': {'#text': description},
     'itunes:duration': {'#text': duration},
     'itunes:author': {'#text': speaker}
   };
 };
+
+const podcastQuery = `
+*[_type == "podcast"][0] {
+    title,
+    description,
+    language,
+    "link": "https://crossroadshobart.org",
+    "category": [
+        {"#text": "crossroads"},
+        {"#text": "gospel"}
+    ],
+    copyright,
+    "managingEditor": email + " (" + name + ")",
+    "webMaster": "info@newfrontdoor.org (New Front Door)",
+    "ttl": 300,
+    "itunes:subtitle": subtitle,
+    "itunes:category": {
+        '@text': category[0],
+         "itunes:category": category[1..2]{"@text": @}
+    },
+    "itunes:keywords": keywords,
+    "itunes:image": image->url,
+    "itunes:author": author,
+    "itunes:explicit": explicit,
+    "itunes:owner": {
+        "itunes:email": email,
+        "itunes:name": name
+    }
+}
+`;
 
 const sermonQuery = `
     *[_type == "sermon"] {
@@ -53,23 +84,32 @@ const sermonQuery = `
 
 export default async (req, res) => {
   try {
+    const podcastData = await sanity.fetch(podcastQuery);
+    podcastData.pubDate = new Date().toUTCString();
+    podcastData.lastBuildDate = new Date().toUTCString();
     const sermonData = await sanity.fetch(sermonQuery);
     const feedObject = {
-      urlset: {
-        '@xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
-        '@xmlns:image': 'http://www.google.com/schemas/sitemap-image/1.1',
+      rss: {
+        '@version': '2.0',
+        '@xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
         '@xmlns:itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
-        url: []
+        channel: {
+          ...podcastData,
+          url: []
+        }
       }
     };
 
     for (const item of sermonData) {
       if (typeof item.url !== 'undefined') {
-        feedObject.urlset.url.push(buildFeedObject(item));
+        feedObject.rss.channel.url.push(buildFeedObject(item));
       }
     }
 
-    const podcast = builder.create(feedObject, {encoding: 'utf-8'});
+    const podcast = builder.create(feedObject, {
+      version: '1.0',
+      encoding: 'utf-8'
+    });
 
     if (res) {
       res.setHeader('Cache-Control', 's-maxage=5, stale-while-revalidate');
