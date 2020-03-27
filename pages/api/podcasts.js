@@ -85,9 +85,13 @@ const sermonQuery = `
 export default async (req, res) => {
   try {
     const podcastData = await sanity.fetch(podcastQuery);
-    podcastData.pubDate = new Date().toUTCString();
-    podcastData.lastBuildDate = new Date().toUTCString();
+
     const sermonData = await sanity.fetch(sermonQuery);
+
+    const sermonItems = await sermonData.map(
+      item => item?.url && buildFeedObject(item)
+    );
+
     const feedObject = {
       rss: {
         '@version': '2.0',
@@ -95,16 +99,12 @@ export default async (req, res) => {
         '@xmlns:itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
         channel: {
           ...podcastData,
-          item: []
+          pubDate: new Date().toUTCString(),
+          lastBuildDate: new Date().toUTCString(),
+          item: sermonItems
         }
       }
     };
-
-    for (const item of sermonData) {
-      if (typeof item.url !== 'undefined') {
-        feedObject.rss.channel.item.push(buildFeedObject(item));
-      }
-    }
 
     const podcast = builder.create(feedObject, {
       version: '1.0',
