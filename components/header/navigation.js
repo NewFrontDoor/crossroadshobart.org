@@ -15,14 +15,15 @@ const navSx = isOpen => ({
   position: ['absolute', 'unset'],
   top: '90px',
   left: '0px',
-  padding: ['20px 80px 0 80px', 0],
+  padding: ['20px 50px 0 50px', 0],
   backgroundColor: ['#63bc50CC', 'none'],
   color: ['text', 'inherit'],
   width: ['100vw', 'initial'],
   height: ['100vh', 'initial'],
   flexDirection: [null, 'row'],
   justifyContent: [null, 'flex-end'],
-  fontSize: ['30px', '16px']
+  fontSize: ['30px', '16px'],
+  zIndex: [2, null]
 });
 
 const Navigation = ({navlinks}) => {
