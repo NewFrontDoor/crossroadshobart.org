@@ -7,7 +7,12 @@ import {SearchCollection as SermonFilter} from '@newfrontdoor/search';
 import HomeBlock from '../../components/block-text-serializer';
 import Layout from '../../components/layout';
 import {fetchQuery} from '../../lib/sanity';
-import {pageQuery, menuQuery, sermonQuery} from '../../lib/queries';
+import {
+  pageQuery,
+  menuQuery,
+  sermonQuery,
+  defaultQuery
+} from '../../lib/queries';
 import {jsx, Styled, Grid} from 'theme-ui';
 
 const fields = [
@@ -18,7 +23,7 @@ const fields = [
   {heading: 'Date Preached', key: 'preachedDate', searchable: false}
 ];
 
-const AllSermons = ({pageData, menuData, sermonData}) => {
+const AllSermons = ({pageData, menuData, sermonData, defaultData}) => {
   const [sermonsSubset, setSubset] = useState(sermonData);
 
   return (
@@ -60,7 +65,8 @@ AllSermons.getInitialProps = async () => {
     `{
         "menuData": ${menuQuery},
         "pageData": ${pageQuery('all-sermons')},
-        "sermonData": ${sermonQuery}
+        "sermonData": ${sermonQuery},
+        "defaultData": ${defaultQuery}
     }`
   );
   return results;
