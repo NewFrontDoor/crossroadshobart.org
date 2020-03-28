@@ -13,7 +13,7 @@ export default async (req, res) => {
     values: req.values
   };
 
-  client.create(doc).then(res => {
-    res.status(200).json({outcome: 'Form was submitted'});
+  client.create(doc).then(result => {
+    res.status(200).json({outcome: 'Form was submitted', result});
   });
 };
