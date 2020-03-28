@@ -12,6 +12,7 @@ import PeopleCard from './people-card-grid-item';
 import HomeCard from './home-card-grid-item';
 import Overlay from './overlay-grid-item';
 import PropTypes from 'prop-types';
+import {submitForm} from '../lib/sanity-fns';
 
 const CustomStyleSerializer = ({children}) => {
   return <Styled.p>{children}</Styled.p>;
@@ -86,7 +87,7 @@ const FormSerializer = ({node}) => {
       {...node}
       validationFn={values => validation(values, node)}
       blockText={val => <BlockText blocks={val} />}
-      submitForm={values => console.log(values)}
+      submitForm={values => submitForm(values)}
     />
   );
 };

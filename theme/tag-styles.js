@@ -106,6 +106,9 @@ export default {
   },
   td: {
     padding: '15px 5px'
+  },
+  fieldset: {
+    border: 'none'
   }
 };
 
