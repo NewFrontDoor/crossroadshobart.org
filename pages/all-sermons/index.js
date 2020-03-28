@@ -27,7 +27,7 @@ const AllSermons = ({pageData, menuData, sermonData, defaultData}) => {
   const [sermonsSubset, setSubset] = useState(sermonData);
 
   return (
-    <Layout wide menuData={menuData} mainData={pageData}>
+    <Layout wide menuData={menuData} mainData={pageData} defaultData={defaultData}>
       <HomeBlock blocks={pageData.body} />
       <Grid columns={2}>
         <SermonFilter
