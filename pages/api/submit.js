@@ -10,7 +10,7 @@ export default async (req, res) => {
   const doc = {
     _type: 'submission',
     datetime: new Date(),
-    values: req.values
+    values: req.body
   };
 
   client.create(doc).then(result => {
