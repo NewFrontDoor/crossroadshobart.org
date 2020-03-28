@@ -6,8 +6,7 @@ const withFonts = require('next-fonts');
 
 const nextConfig = {
   env: {
-    GOOGLE_MAPS_API: process.env.GOOGLE_MAPS_API,
-    XRDS_SANITY: process.env.XRDS_SANITY
+    GOOGLE_MAPS_API: process.env.GOOGLE_MAPS_API
   },
   webpack: (config, options) => {
     // Modify the `config` here
