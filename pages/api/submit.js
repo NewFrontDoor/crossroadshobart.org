@@ -3,7 +3,7 @@ import sanity from '@sanity/client';
 const client = sanity({
   projectId: 'woz73k85',
   dataset: 'production',
-  token: process.env.SANITY_TOKEN
+  token: process.env.SAN_FORM
 });
 
 export default async (req, res) => {
