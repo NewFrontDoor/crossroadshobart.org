@@ -1,5 +1,6 @@
-import sanityClient from '@sanity/cli';
-const client = sanityClient({
+import sanity from '@sanity/client';
+
+const client = sanity({
   projectId: 'woz73k85',
   dataset: 'production',
   token: process.env.SANITY_TOKEN
