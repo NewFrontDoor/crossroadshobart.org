@@ -2,7 +2,7 @@
   "name": "crossroadshobart-org",
   "version": 2,
     "env": {
-      "SAN_FORM": "@san_form"
+      "XRDS_SANITY": "@xrds_sanity"
     },
   "build": {
     "env": {
