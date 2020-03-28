@@ -1,6 +1,9 @@
 {
   "name": "crossroadshobart-org",
   "version": 2,
+    "env": {
+      "SAN_FORM": "@san_form"
+    },
   "build": {
     "env": {
       "GOOGLE_MAPS_API": "@onewaymargate-org-google-maps-api"
