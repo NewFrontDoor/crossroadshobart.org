@@ -1,6 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 
 export default async function(req, res) {
+  console.log(req);
   sgMail.setApiKey(process.env.XRDS_SENDGRID);
 
   const {targetEmail, email, message} = req.body;
