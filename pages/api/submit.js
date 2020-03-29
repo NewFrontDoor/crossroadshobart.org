@@ -14,21 +14,7 @@ export default async (req, res) => {
     values: JSON.stringify(req.body)
   };
 
-  const inputs = {
-    targetEmail: 'areader0@gmail.com',
-    email: req.body.email,
-    message: req.body
-  };
-
-  client
-    .create(doc)
-    .then(result => {
-      ky.post('https://crossroadshobart.org/api/send', {
-        json: inputs
-      }).json();
-      return result;
-    })
-    .then(result => {
-      res.status(200).json({outcome: 'Form was submitted', result});
-    });
+  client.create(doc).then(result => {
+    res.status(200).json({outcome: 'Form was submitted', result});
+  });
 };

@@ -8,8 +8,8 @@ export default async function(req, res) {
 
   const content = {
     to: targetEmail,
-    from: email,
-    subject: `New Message From - ${email}`,
+    from: 'info@newfrontdoor.org',
+    subject: `[no-reply] New Message From - ${email}`,
     text: message,
     html: `<p>${message}</p>`
   };
