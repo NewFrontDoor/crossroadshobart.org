@@ -16,7 +16,15 @@ export default async function(req, res) {
     )
     .join('');
 
+  const emailText = `
+    Hi Crossroads Welcomers!\nA new Visitor form submission has arrived. Please see the details below.\n ${JSON.stringify(
+      message
+    )}
+    `;
+
   const emailBody = `
+    <p>Hi Crossroads Welcomers!</p>
+    <p>A new Visitor form submission has arrived. Please see the details below.</p>
     <table>
     ${table}
     </table>
@@ -24,9 +32,9 @@ export default async function(req, res) {
 
   const content = {
     to: targetEmail,
-    from: 'info@newfrontdoor.org',
-    subject: `[no-reply] New Message From - ${message.email}`,
-    text: JSON.stringify(message),
+    from: message.email,
+    subject: `[no-reply] New Visitor form submission from ${message.name}`,
+    text: emailText,
     html: `<p>${emailBody}</p>`
   };
 
