@@ -23,7 +23,7 @@ export default async (req, res) => {
   client
     .create(doc)
     .then(result => {
-      ky.post('/api/send', {
+      ky.post('https://crossroadshobart.org/api/send', {
         json: inputs
       }).json();
       return result;
