@@ -10,7 +10,7 @@ export default async function(req, res) {
     to: targetEmail,
     from: 'info@newfrontdoor.org',
     subject: `[no-reply] New Message From - ${email}`,
-    text: message,
+    text: message.toString(),
     html: `<p>${message}</p>`
   };
 
