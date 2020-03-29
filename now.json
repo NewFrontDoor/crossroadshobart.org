@@ -2,6 +2,7 @@
   "name": "crossroadshobart-org",
   "version": 2,
     "env": {
+      "XRDS_SENDGRID": "@xrds_sendgrid",
       "XRDS_SANITY": "@xrds_sanity"
     },
   "build": {

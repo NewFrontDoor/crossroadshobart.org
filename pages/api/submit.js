@@ -1,4 +1,5 @@
 import sanity from '@sanity/client';
+import ky from 'ky-universal';
 
 const client = sanity({
   projectId: 'woz73k85',
@@ -13,7 +14,21 @@ export default async (req, res) => {
     values: JSON.stringify(req.body)
   };
 
-  client.create(doc).then(result => {
-    res.status(200).json({outcome: 'Form was submitted', result});
-  });
+  const inputs = {
+    targetEmail: 'areader0@gmail.com',
+    email: req.body.email,
+    message: req.body
+  };
+
+  client
+    .create(doc)
+    .then(result => {
+      ky.post('/api/send', {
+        json: inputs
+      }).json();
+      return result;
+    })
+    .then(result => {
+      res.status(200).json({outcome: 'Form was submitted', result});
+    });
 };
