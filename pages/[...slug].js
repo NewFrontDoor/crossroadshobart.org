@@ -25,7 +25,7 @@ Page.propTypes = {
 Page.getInitialProps = async ({query}) => {
   const results = await fetchQuery(
     `{
-        "mainData": ${pageQuery(query.slug)},
+        "mainData": ${pageQuery(query.slug[query.slug.length - 1])},
         "menuData": ${menuQuery},
         "defaultData": ${defaultQuery}
     }`

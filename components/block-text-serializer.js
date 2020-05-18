@@ -10,9 +10,10 @@ import Card from './card-grid-item';
 import HorizontalCard from './horizontal-card-grid-item';
 import PeopleCard from './people-card-grid-item';
 import HomeCard from './home-card-grid-item';
+import Toc from './toc';
 import Overlay from './overlay-grid-item';
 import PropTypes from 'prop-types';
-import {submitForm} from '../lib/sanity-fns';
+import {submitForm, slugify} from '../lib/sanity-fns';
 
 const CustomStyleSerializer = ({children}) => {
   return <Styled.p>{children}</Styled.p>;
@@ -158,14 +159,22 @@ ExternalLinkSerializer.propTypes = {
   }).isRequired
 };
 
+const tocSerializer = (blocks, heading, headingRef) => {
+  const data = blocks
+    .filter(item => item.style === headingRef)
+    .map(text => text.children[0].text);
+  console.log(data);
+  return <Toc data={data} heading={heading} />;
+};
+
 const BlockRenderer = props => {
   const style = props.node.style || 'normal';
 
   const elements = {
     h1: <Styled.h1>{props.children}</Styled.h1>,
-    h2: <Styled.h2>{props.children}</Styled.h2>,
+    h2: <Styled.h2 id={slugify(props.children)}>{props.children}</Styled.h2>,
     h3: <Styled.h3>{props.children}</Styled.h3>,
-    h4: <Styled.h4>{props.children}</Styled.h4>,
+    h4: <Styled.h4 id={slugify(props.children)}>{props.children}</Styled.h4>,
     h5: <Styled.h5>{props.children}</Styled.h5>,
     h6: <Styled.h6>{props.children}</Styled.h6>
   };
@@ -190,6 +199,11 @@ BlockRenderer.propTypes = {
 };
 
 const BlockText = ({blocks}) => {
+  function ticToc({node}) {
+    const {heading, headingRef} = node;
+    return tocSerializer(blocks, heading, headingRef);
+  }
+
   return (
     <BlockContent
       blocks={blocks}
@@ -201,7 +215,8 @@ const BlockText = ({blocks}) => {
           gridblock: GridBlockSerializer,
           image: ImageSerializer,
           button: ButtonSerializer,
-          inlineButton: ButtonSerializer
+          inlineButton: ButtonSerializer,
+          toc: ticToc
         },
         marks: {
           anchor: AnchorSerializer,
