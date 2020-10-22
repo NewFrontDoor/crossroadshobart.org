@@ -21,7 +21,7 @@ export default async function({name}) {
   const contentType = mime.getType(name);
   const key = `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`;
   const bucket = 'sermons.crossroadshobart.org';
-  const origin = 'https://crossroadshobart.sanity.studio/dashboard';
+  const origin = 'https://crossroadshobart.sanity.studio';
 
   const params = {
     Expires: 60,
