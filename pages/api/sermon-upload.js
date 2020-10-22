@@ -17,11 +17,25 @@ const createPresignedPost = params => {
   });
 };
 
-export default async function({name}) {
+export default async function(data) {
+  const name = data.name;
+  const requestOrigin = data.headers.origin;
   const contentType = mime.getType(name);
   const key = `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`;
   const bucket = 'sermons.crossroadshobart.org';
-  const origin = 'https://crossroadshobart.sanity.studio/dashboard';
+
+  const validOrigins = [
+    'http://localhost:3000',
+    'https://crossroadshobart.sanity.studio',
+    'https://crossroadshobart.sanity.studio/dashboard'
+  ];
+
+  let origin = null;
+
+  if (validOrigins.includes(requestOrigin)) {
+    // Set the header to the requested origin
+    origin = requestOrigin;
+  }
 
   const params = {
     Expires: 60,
