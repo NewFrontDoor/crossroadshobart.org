@@ -17,7 +17,9 @@ const createPresignedPost = params => {
   });
 };
 
-export default async function({name}) {
+export default async function(req, res) {
+  console.log(req);
+  const name = req.name;
   const contentType = mime.getType(name);
   const key = `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`;
   const bucket = 'sermons.crossroadshobart.org';
