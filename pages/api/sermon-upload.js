@@ -33,6 +33,8 @@ export default async function({name}) {
     }
   };
 
+  console.log(params);
+
   try {
     const presignedPostData = await createPresignedPost(params);
 
