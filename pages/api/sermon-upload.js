@@ -20,7 +20,7 @@ const createPresignedPost = params => {
 export default async function(req, res) {
   console.log(req.query);
   console.log(req.body);
-  const name = req.query.name;
+  const name = req.body.name;
   const contentType = mime.getType(name);
   const key = `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`;
   const bucket = 'sermons.crossroadshobart.org';
