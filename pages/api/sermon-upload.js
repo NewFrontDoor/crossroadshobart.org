@@ -39,13 +39,10 @@ function initMiddleware(middleware) {
 
 export default async function(req, res) {
   await corsMiddleware(req, res);
-  console.log(req.query);
-  console.log(req.body);
   const name = req.body.name;
   const contentType = mime.getType(name);
   const key = `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`;
   const bucket = 'sermons.crossroadshobart.org';
-  const origin = 'https://crossroadshobart.sanity.studio';
 
   const params = {
     Expires: 60,
@@ -57,26 +54,12 @@ export default async function(req, res) {
     }
   };
 
-  console.log(params);
-
   try {
     const presignedPostData = await createPresignedPost(params);
 
-    const response = {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': origin,
-        'Access-Control-Allow-Credentials': true
-      },
-      body: JSON.stringify({
-        error: false,
-        data: presignedPostData,
-        message: null
-      })
-    };
-
-    return [null, response];
+    res.status(200).json({presignedPostData});
   } catch (error) {
-    return [error];
+    console.log(error);
+    res.status(500).send('Alan sucks at coding');
   }
 }
