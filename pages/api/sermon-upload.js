@@ -1,6 +1,6 @@
 import S3 from 'aws-sdk/clients/s3';
 import mime from 'mime';
-import Cors from 'cors';
+import cors from 'cors';
 import cryptoRandomString from 'crypto-random-string';
 
 const createPresignedPost = params => {
@@ -18,24 +18,27 @@ const createPresignedPost = params => {
   });
 };
 
-const cors = initMiddleware(Cors({
-  methods: ['POST', 'OPTIONS']
-}))
+const corsMiddleware = initMiddleware(
+  cors({
+    methods: ['POST', 'OPTIONS']
+  })
+);
 
-export default function initMiddleware(middleware) {
+function initMiddleware(middleware) {
   return (req, res) =>
     new Promise((resolve, reject) => {
-      middleware(req, res, (result) => {
+      middleware(req, res, result => {
         if (result instanceof Error) {
-          return reject(result)
+          return reject(result);
         }
-        return resolve(result)
-      })
-    })
+
+        return resolve(result);
+      });
+    });
 }
 
 export default async function(req, res) {
-  await cors(req, res);
+  await corsMiddleware(req, res);
   console.log(req.query);
   console.log(req.body);
   const name = req.body.name;
