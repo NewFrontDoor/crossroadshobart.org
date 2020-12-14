@@ -48,7 +48,7 @@ const sermonQuery = `
     "series": series->title,
     "book": passage,
     "image": series->image,
-    "url": "https://s3-ap-southeast-2.amazonaws.com/sermons.crossroadshobart.org/" + file,
+    "url": "https://sermons.crossroadshobart.org/" + file,
     "slug": slug.current
   } | order(preachedDate desc)
   `;

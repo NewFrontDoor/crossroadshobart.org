@@ -18,7 +18,7 @@ const buildFeedObject = ({
     link: {'#text': url},
     description: {'#text': description},
     enclosure: {
-      '@url': `https://s3-ap-southeast-2.amazonaws.com/sermons.crossroadshobart.org/${url}`,
+      '@url': `https://sermons.crossroadshobart.org/${url}`,
       '@type': 'audio/mpeg',
       '@length': filesize
     },
