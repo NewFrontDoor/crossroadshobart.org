@@ -7,7 +7,7 @@ declare namespace NodeJS {
 	}
 
 	interface ProcessEnv {
-		readonly AWS_ACCESS_KEY_ID: string;
-		readonly AWS_SECRET_ACCESS_KEY: string;
+		readonly AWS_USER_KEY_ID: string;
+		readonly AWS_USER_SECRET: string;
 	}
 }

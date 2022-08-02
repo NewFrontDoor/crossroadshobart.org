@@ -16,8 +16,8 @@ const createPresignedPost = presignedPost({
 	bucket: "sermons.crossroadshobart.org",
 	s3Options: {
 		region: "ap-southeast-2",
-		accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+		accessKeyId: process.env.AWS_USER_KEY_ID,
+		secretAccessKey: process.env.AWS_USER_SECRET
 	}
 });
 
