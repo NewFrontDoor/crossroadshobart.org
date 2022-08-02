@@ -2,12 +2,12 @@
 /// <reference types="next/types/global" />
 
 declare namespace NodeJS {
-  interface Process {
-    readonly browser: boolean;
-  }
+	interface Process {
+		readonly browser: boolean;
+	}
 
-  interface ProcessEnv {
-    readonly AWS_USER_KEY_ID: string;
-    readonly AWS_USER_SECRET: string;
-  }
+	interface ProcessEnv {
+		readonly AWS_ACCESS_KEY_ID: string;
+		readonly AWS_SECRET_ACCESS_KEY: string;
+	}
 }
