@@ -3,7 +3,7 @@ import React from 'react';
 import App from 'next/app';
 import {ThemeProvider, Styled} from 'theme-ui';
 import theme from '../theme';
-require('typeface-lato'); //eslint-disable-line
+import '../styles/global.css';
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
@@ -21,11 +21,13 @@ class MyApp extends App {
   render() {
     const {Component, pageProps} = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <Styled.root>
-          <Component {...pageProps} />
-        </Styled.root>
-      </ThemeProvider>
+      <div className="font-sans">
+        <ThemeProvider theme={theme}>
+          <Styled.root>
+            <Component {...pageProps} />
+          </Styled.root>
+        </ThemeProvider>
+      </div>
     );
   }
 }
