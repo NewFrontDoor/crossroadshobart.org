@@ -1,20 +1,12 @@
-/** @jsx jsx */
 import PropTypes from 'prop-types';
-import {jsx, Styled} from 'theme-ui';
 import Link from '../link';
 
 const Navlink = ({link, text}) => (
-  <Styled.li
-    sx={{
-      padding: '0',
-      margin: [null, '0 0 0 45px'],
-      lineHeight: ['1.6', 'initial']
-    }}
-  >
+  <li className="px-4 py-1 md:p-3">
     <Link link={link} variant="nav">
       {text}
     </Link>
-  </Styled.li>
+  </li>
 );
 
 Navlink.propTypes = {

@@ -27,6 +27,7 @@
     "autoprefixer": "^10.4.14",
     "aws-sdk": "^2.799.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
+    "classnames": "^2.3.2",
     "cors": "^2.8.5",
     "crypto-random-string": "^3.2.0",
     "emotion-theming": "^10.0.10",

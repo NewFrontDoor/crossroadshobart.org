@@ -15,9 +15,9 @@ const navSx = {
 
 const Header = ({navlinks}) => {
   return (
-    <header sx={navSx}>
-      <Link passedSx={{flex: '0 1 300px'}}>
-        <Logo />
+    <header className="bg-darkBlue py-3 px-4 flex justify-between">
+      <Link>
+        <Logo height="3rem" />
       </Link>
       <Navigation navlinks={navlinks} />
     </header>

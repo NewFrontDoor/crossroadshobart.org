@@ -1,30 +1,9 @@
-/** @jsx jsx */
 import PropTypes from 'prop-types';
 import {useState} from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
 import Navlink from './nav-link';
 import Navparent from './nav-parent';
-import {jsx} from 'theme-ui';
-
-const navSx = isOpen => ({
-  flex: '2 1 auto',
-  listStyle: 'none',
-  margin: '0',
-  alignItems: ['left', 'center'],
-  display: [`${isOpen ? 'block' : 'none'}`, 'flex'],
-  position: ['absolute', 'unset'],
-  top: '90px',
-  left: '0px',
-  padding: ['20px 50px 0 50px', 0],
-  backgroundColor: ['#63bc50CC', 'none'],
-  color: ['text', 'inherit'],
-  width: ['100vw', 'initial'],
-  height: ['100vh', 'initial'],
-  flexDirection: [null, 'row'],
-  justifyContent: [null, 'flex-end'],
-  fontSize: ['30px', '16px'],
-  zIndex: [2, null]
-});
+import className from 'classnames';
 
 const Navigation = ({navlinks}) => {
   const [isOpen, setOpen] = useState(false);
@@ -34,31 +13,30 @@ const Navigation = ({navlinks}) => {
 
   return (
     <>
-      <div sx={{display: ['block', 'none']}}>
+      <div className="md:hidden p-3">
         <HamburgerMenu
           isOpen={isOpen}
           menuClicked={handleClick}
-          width={27}
-          height={22.5}
-          strokeWidth={2}
-          rotate={0}
+          height={24}
           color="white"
-          borderRadius={0}
-          animationDuration={0.3}
+          rotate={0}
+          animationDuration={0.25}
         />
       </div>
-      <nav sx={navSx(isOpen)} onClick={() => setOpen(false)}>
-        {navlinks.map(link => {
+      <nav
+        className={className(
+          'list-none md:flex items-center h-screen md:h-auto absolute md:static bg-darkBlue w-screen md:w-auto left-0 top-5rem text-xl md:text-base z-50',
+          isOpen ? 'block' : 'hidden'
+        )}
+        onClick={() => setOpen(false)}
+      >
+        {navlinks.map((link) => {
           if (!link.childpages) {
             return null;
           }
 
           return link.childpages.length <= 1 ? (
-            <Navlink
-              key={link.text}
-              link={link.childpages[0].slug.current}
-              text={link.text}
-            />
+            <Navlink key={link.text} link={link.childpages[0].slug.current} text={link.text} />
           ) : (
             <Navparent
               key={link.text}
