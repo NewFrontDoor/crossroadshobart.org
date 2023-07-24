@@ -16,7 +16,7 @@ export default {
   styles,
   box,
   text,
-  ...meta,
+  //...meta,
   ...typography
 };
 

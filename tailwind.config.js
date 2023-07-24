@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     colors: {
       bg: 'white',
+      white: 'white',
       darkBlue: '#1a3248',
       lightBlue: '#04b5aa'
     },
@@ -24,7 +25,8 @@ module.exports = {
       '5rem': '5rem'
     },
     fontFamily: {
-      sans: ['Lato', 'sans-serif']
+      heading: ['Work Sans', 'sans-serif'],
+      copy: ['Lora', 'serif']
     }
   },
   plugins: []

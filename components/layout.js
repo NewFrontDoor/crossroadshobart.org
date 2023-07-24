@@ -16,45 +16,23 @@ const Layout = ({menuData, defaultData, mainData, wide, children}) => {
       </Head>
       <Header navlinks={menuData.menuitems} />
       {defaultData.frontbanner && <Banner {...defaultData.frontbanner} />}
-      <Grid
+      <div
         sx={{
-          gridTemplateColumns: ['1fr', '1fr 600px 1fr', '1fr 1000px 1fr'],
-          gridTemplateRows: [null, '310px 60px 1fr'],
-          backgroundImage: `url(${urlFor(menuData.backgroundImage).url()})`,
-          backgroundSize: 'contain',
-          backgroundRepeatY: 'repeat',
-          gridGap: ['0', '16px']
+          gridColumn: [null, '1/4'],
+          gridRow: [null, '1/3'],
+          backgroundImage: `url(${urlFor(mainData.mainImage).auto('format').url()}), url(${
+            mainData.mainImageSmall
+          })`,
+          width: '100%',
+          height: '200px',
+          backgroundSize: 'cover',
+          backgroundPosition: [null, 'center -50px']
         }}
-      >
-        <div
-          sx={{
-            gridColumn: [null, '1/4'],
-            gridRow: [null, '1/3'],
-            backgroundImage: `url(${urlFor(mainData.mainImage)
-              .auto('format')
-              .url()}), url(${mainData.mainImageSmall})`,
-            width: '100%',
-            height: ['200px', '100%'],
-            backgroundSize: 'cover',
-            backgroundPosition: [null, 'center -50px']
-          }}
-        />
-        <Container
-          sx={{
-            gridColumn: [null, '2/3'],
-            gridRow: [null, '2/4'],
-            backgroundColor: 'white',
-            padding: [
-              '10px',
-              '90px 20px 0 20px',
-              `90px ${wide ? '20px' : '155px'} 0 ${wide ? '20px' : '155px'}`
-            ]
-          }}
-        >
-          <Styled.h1>{mainData.title}</Styled.h1>
-          {children}
-        </Container>
-      </Grid>
+      />
+      <div className="px-3 py-4 max-w-3xl m-auto">
+        <h1 className="text-4xl font-heading">{mainData.title}</h1>
+        {children}
+      </div>
       <Footer />
     </div>
   );

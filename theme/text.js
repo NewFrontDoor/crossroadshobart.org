@@ -14,7 +14,7 @@ export default {
     fontWeight: '900',
     color: 'white',
     lineHeight: 1.15,
-    "::after": {
+    '::after': {
       content: '""',
       display: 'block',
       width: '130px',
@@ -28,7 +28,7 @@ export default {
     color: 'accent',
     lineHeight: 1.15,
     marginBottom: ['12px', '50px'],
-    "::after": {
+    '::after': {
       content: '""',
       display: 'block',
       width: '130px',

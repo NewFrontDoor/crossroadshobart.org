@@ -3,7 +3,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import {Link as ThemeUiLink} from 'theme-ui';
 
-const pageLookup = link => {
+const pageLookup = (link) => {
   // This depends on the fact that no sub-subdirectory of pages contains an index file
   if (link.includes('/')) {
     const urlArray = link.split('/');
@@ -34,20 +34,12 @@ const Link = ({link, children, isBlank, hasNoAnchor, passedSx, ...rest}) => {
   }
 
   return regex.test(link) ? (
-    hasNoAnchor ? (
-      <NextLink passHref href={pageLookup(link)} as={`/${link}`}>
-        {children}
-      </NextLink>
-    ) : (
-      <NextLink passHref href={pageLookup(link)} as={`/${link}`}>
-        <ThemeUiLink sx={passedSx} {...rest}>
-          {children}
-        </ThemeUiLink>
-      </NextLink>
-    )
+    <NextLink passHref href={pageLookup(link)} as={`/${link}`}>
+      <a>{children}</a>
+    </NextLink>
   ) : (
     <ThemeUiLink href={link} sx={passedSx} {...rest}>
-      {children}
+      <a>{children}</a>
     </ThemeUiLink>
   );
 };

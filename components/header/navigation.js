@@ -25,8 +25,10 @@ const Navigation = ({navlinks}) => {
       </div>
       <nav
         className={className(
-          'list-none md:flex items-center h-screen md:h-auto absolute md:static bg-darkBlue w-screen md:w-auto left-0 top-5rem text-xl md:text-base z-50',
-          isOpen ? 'block' : 'hidden'
+          'list-none md:flex gap-3 items-center h-screen md:h-auto absolute md:static bg-darkBlue w-screen md:w-auto left-0 top-5rem text-xl md:text-base z-50',
+          isOpen ? 'block' : 'hidden',
+          'text-white',
+          'font-heading'
         )}
         onClick={() => setOpen(false)}
       >

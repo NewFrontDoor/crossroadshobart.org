@@ -5,58 +5,27 @@ import PropTypes from 'prop-types';
 import urlFor from '../lib/sanityImg';
 import BlockText from './block-text-serializer';
 
-const homeSection = {
-  position: 'relative',
-  zIndex: '1',
-  display: 'grid',
-  gridTemplateColumns: 'auto',
-  gridTemplateRows: 'auto'
-};
-
-const imageStyle = {
-  objectFit: 'cover',
-  position: 'absolute',
-  top: '0',
-  width: '100%',
-  height: '100%'
-};
-
-const homeSectionInner = {
-  gridRow: '1',
-  maxWidth: '1000px',
-  margin: 'auto',
-  textAlign: 'center',
-  verticalAlign: 'middle'
-};
-
-const HomeOverlay = props => {
+const HomeOverlay = (props) => {
   const {heading, blurb, background, isFirstPage} = props;
   return (
-    <Grid sx={{padding: '130px 0', height: [null, '550px']}}>
-      <img
-        src={urlFor(background)
-          .height(550)
-          .url()}
-        sx={imageStyle}
-        loading="eager"
-      />
-      <div sx={homeSection}>
-        <div sx={homeSectionInner}>
-          {isFirstPage ? (
-            <Text as="h1" variant="homeH1">
-              {heading}
-            </Text>
-          ) : (
-            heading && (
-              <Text as="h2" variant="homeH2">
-                {heading}
-              </Text>
-            )
-          )}
-          {blurb && <BlockText blocks={blurb} />}
-        </div>
+    <div className="py-5 bg-white">
+      {isFirstPage && (
+        <img
+          src={urlFor(background).height(350).url()}
+          className="object-cover absolute top-0 w-full h-full"
+          style={{filter: 'brightness(65%)'}}
+          loading="eager"
+        />
+      )}
+      <div className="max-w-3xl m-auto z-10 relative px-3">
+        {isFirstPage ? (
+          <h1 className="font-heading text-5xl text-white tracking-tight mb-4">{heading}</h1>
+        ) : (
+          heading && <h2 className="font-heading text-4xl mb-4">{heading}</h2>
+        )}
+        {blurb && <BlockText blocks={blurb} />}
       </div>
-    </Grid>
+    </div>
   );
 };
 

@@ -17,38 +17,22 @@ const homeSectionInner = {
   verticalAlign: 'middle'
 };
 
-const HomeSide = props => {
+const HomeSide = (props) => {
   const {heading, blurb, background} = props;
   return (
-    <Grid
-      sx={{
-        position: 'relative',
-        gridTemplateColumns: ['1fr', '1fr 1fr'],
-        gap: '0'
-      }}
-    >
+    <div className="grid relative grid-cols-2 items-center bg-darkBlue text-white">
       <img
-        src={urlFor(background)
-          .height(550)
-          .url()}
-        sx={imageStyle}
+        src={urlFor(background).height(300).url()}
+        className="object-cover w-full h-full"
         loading="lazy"
       />
 
-      <div sx={homeSectionInner}>
-        {heading && (
-          <Text as="h2" variant="homeH2">
-            {heading}
-          </Text>
-        )}
+      <div className="px-5">
+        {heading && <h2 className="font-heading text-4xl mb-4">{heading}</h2>}
 
-        {blurb && (
-          <div sx={{variant: 'text.homeBlurb', textAlign: 'left'}}>
-            <BlockText blocks={blurb} />
-          </div>
-        )}
+        {blurb && <BlockText blocks={blurb} />}
       </div>
-    </Grid>
+    </div>
   );
 };
 

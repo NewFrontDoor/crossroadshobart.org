@@ -1,11 +1,4 @@
 export default {
-  root: {
-    // Uses the theme values provided above
-    fontFamily: 'body',
-    fontWeight: 'body',
-    margin: '0',
-    padding: '0'
-  },
   h1: {
     fontFamily: 'heading',
     fontWeight: 'heading',
@@ -17,10 +10,10 @@ export default {
     textAlign: 'center'
   },
   h2: {
-    fontSize: 36,
-    fontFamily: 'heading',
-    color: 'primary',
-    fontWeight: 'body'
+    //fontSize: 36,
+    //fontFamily: 'heading',
+    //color: 'primary',
+    //fontWeight: 'body'
   },
   h3: {
     fontSize: '24px',
@@ -29,7 +22,7 @@ export default {
     color: 'accent',
     lineHeight: 1.15,
     marginBottom: '10px',
-    "::after": {
+    '::after': {
       content: [null, '""'],
       display: 'block',
       width: '130px',
@@ -60,7 +53,7 @@ export default {
     fontFamily: 'body',
     fontWeight: 'body',
     lineHeight: 'body',
-    color: 'text',
+    color: 'text'
   },
   a: {
     color: 'accent',
@@ -120,7 +113,6 @@ const box = {
   },
   body: {
     mx: 'auto',
-    bg: 'background',
     color: 'text'
   }
 };

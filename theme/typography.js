@@ -1,7 +1,7 @@
 export default {
   fonts: {
-    body: '"Lato", sans-serif',
-    heading: '"Lato", sans-serif',
+    body: '"Lora", sans-serif',
+    heading: '"Work Sans", sans-serif',
     monospace: 'monospace'
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
