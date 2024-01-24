@@ -1,13 +1,5 @@
 /// <reference types="next" />
-/// <reference types="next/types/global" />
+/// <reference types="next/image-types/global" />
 
-declare namespace NodeJS {
-	interface Process {
-		readonly browser: boolean;
-	}
-
-	interface ProcessEnv {
-		readonly AWS_USER_KEY_ID: string;
-		readonly AWS_USER_SECRET: string;
-	}
-}
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
