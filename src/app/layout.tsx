@@ -1,6 +1,6 @@
 import './globals.css';
 import Navigation from './Navigation';
-import {Nunito} from 'next/font/google';
+import {Inter} from 'next/font/google';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -12,16 +12,16 @@ export const metadata = {
     description: ''
 };
 
-const nunito = Nunito({
+const inter = Inter({
     subsets: ['latin'],
-    weight: ['400', '700'],
-    style: ['normal', 'italic'],
+    weight: ['400', '500'],
+    style: ['normal'],
     display: 'swap'
 });
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
     return (
-        <html lang="" className={`font-copy leading-[1.5] ${nunito.className}`}>
+        <html lang="" className={`font-copy font-normal text-lg leading-6 ${inter.className}`}>
             <body>
                 <Navigation />
                 {children}

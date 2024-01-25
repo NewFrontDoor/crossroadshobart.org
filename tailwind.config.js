@@ -2,6 +2,10 @@
 module.exports = {
     content: ['./src/**/*.{ts,tsx,mdx}'],
     theme: {
+        fontWeight: {
+            normal: '400',
+            bold: '500'
+        },
         fontFamily: {
             sans: ['Nunito', 'sans-serif']
         },

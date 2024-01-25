@@ -3,11 +3,14 @@ import Link from 'next/link';
 import Logo from '../../public/crossroads.svg';
 export default function Navigation() {
     return (
-        <div className="flex max-w-3xl justify-between m-auto p-4">
-            <Image alt="crossroads logo" className="invert" src={Logo} />
-            <div className="flex items-center gap-4 font-bold">
-                <Link href="/contact-us">About Us</Link>
-                <Link href="/contact-us">Kids & Youth</Link>
+        <div className="flex max-w-4xl justify-between m-auto p-4">
+            <Link href="/">
+                <Image alt="crossroads logo" className="invert" src={Logo} />
+            </Link>
+            <div className="flex items-center gap-6 font-bold">
+                <Link href="/">Sunday Visit</Link>
+                <Link href="/ministries">Ministries</Link>
+                <Link href="/about">About</Link>
                 <Link href="/contact-us">Contact Us</Link>
             </div>
         </div>
