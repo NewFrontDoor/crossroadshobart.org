@@ -1,4 +1,6 @@
-const withMDX = require('@next/mdx')();
+import remarkFrontmatter from 'remark-frontmatter';
+import nextMDX from '@next/mdx';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,4 +23,11 @@ const nextConfig = {
     }
 };
 
-module.exports = withMDX(nextConfig);
+export default nextMDX({
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: []
+        //providerImportSource: '@mdx-js/react'
+    }
+})(nextConfig);

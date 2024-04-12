@@ -2,6 +2,7 @@
   "name": "crossroadshobart",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +19,9 @@
     "next": "^14.1.0",
     "next-mdx-remote": "^3.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.6",
@@ -29,5 +32,11 @@
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   }
 }
