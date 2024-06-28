@@ -15,7 +15,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     return (
         <html
             lang=""
-            className={`bg-stone-950 text-amber-50 font-sans font-normal text-lg leading-6`}
+            className={`bg-stone-50 text-amber-950 font-sans font-normal text-lg leading-6`}
         >
             <body>
                 <Navigation />
