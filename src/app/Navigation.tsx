@@ -4,9 +4,7 @@ import Logo from '../../public/crossroads.svg';
 export default function Navigation() {
     return (
         <div className="flex max-w-4xl justify-between m-auto p-4">
-            <Link href="/">
-                <Image alt="crossroads logo" className="invert" src={Logo} />
-            </Link>
+            <Link href="/">Crossroads</Link>
             <div className="flex items-center gap-6 font-bold">
                 <Link href="/">Sunday Visit</Link>
                 <Link href="/ministries">Ministries</Link>

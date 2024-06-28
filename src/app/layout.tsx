@@ -1,6 +1,5 @@
 import './globals.css';
 import Navigation from './Navigation';
-import {Inter} from 'next/font/google';
 
 const defaultUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -12,16 +11,12 @@ export const metadata = {
     description: ''
 };
 
-const inter = Inter({
-    subsets: ['latin'],
-    weight: ['400', '500'],
-    style: ['normal'],
-    display: 'swap'
-});
-
 export default function RootLayout({children}: {children: React.ReactNode}) {
     return (
-        <html lang="" className={`font-copy font-normal text-lg leading-6 ${inter.className}`}>
+        <html
+            lang=""
+            className={`bg-stone-950 text-amber-50 font-sans font-normal text-lg leading-6`}
+        >
             <body>
                 <Navigation />
                 {children}

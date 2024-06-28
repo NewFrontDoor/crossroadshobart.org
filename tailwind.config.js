@@ -7,7 +7,8 @@ module.exports = {
             bold: '500'
         },
         fontFamily: {
-            sans: ['Nunito', 'sans-serif']
+            sans: ['Abordage', 'sans-serif'],
+            display: ['Basteleur', 'sans-serif']
         },
         extend: {}
     },
