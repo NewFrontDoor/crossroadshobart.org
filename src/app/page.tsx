@@ -1,19 +1,27 @@
 import ContactUs from 'features/ContactUs';
+
 import React from 'react';
 
 export default function HomePage() {
   return (
-    <div className="max-w-2xl m-auto flex flex-col pt-16 gap-16">
-      <div className="p-2 font-display text-6xl font-bold text-center">
-        <h1>
-          Come and <span className="">meet</span> <span className="text-emerald-500">Jesus</span>
-        </h1>
+    <div className="max-w-2xl m-auto flex flex-col gap-8 px-3">
+      <div>
+        <div className="p-12 mb-6 font-display text-6xl text-center">
+          <h1 className="font-black">
+            <span>
+              Come and <br />
+              meet{' '}
+            </span>
+            <span className="text-teal-500 italic">Jesus</span>
+          </h1>
+        </div>
       </div>
       <p>
         You’re welcome at Crossroads regardless of where you’re from or what you believe. <br />
       </p>
       <p>
         We meet Sundays at <strong>4pm. 25 Tasma St, North Hobart</strong>
+        <br />
         There’s singing, praying, a talk from the Bible, and a full kids’ program.
       </p>
       <p>
@@ -22,11 +30,11 @@ export default function HomePage() {
         lives in Hobart, we trust that God will use us to show more people his love.
       </p>
 
-      <div className="mt-48 mb-16 p-2 font-display text-6xl font-bold text-center">
+      <div className="p-16 pt-32 font-display text-5xl font-bold text-center">
         <h2>Other ministries</h2>
       </div>
 
-      <ul>
+      <ul className="flex flex-col gap-4">
         <li>
           <strong>Growth groups</strong> - We meet in smaller groups during the week to share life,
           study the Bible and pray. Join a growth group.

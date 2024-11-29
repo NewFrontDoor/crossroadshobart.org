@@ -1,33 +1,19 @@
-import nextMDX from '@next/mdx';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
   reactStrictMode: false,
-  pageExtensions: ['mdx', 'tsx'],
 
   async redirects() {
     return [
       {
         source: '/values-and-mission',
-        destination: '/about',
+        destination: '/',
         permanent: true
       },
       {
         source: '/kids-youth',
-        destination: '/ministries',
+        destination: '/',
         permanent: true
       }
     ];
   }
 };
-
-export default nextMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: []
-    //providerImportSource: '@mdx-js/react'
-  }
-})(nextConfig);
