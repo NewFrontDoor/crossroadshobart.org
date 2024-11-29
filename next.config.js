@@ -1,19 +1,19 @@
-const withPlugins = require("next-compose-plugins");
-const withImages = require("next-images");
-const withFonts = require("next-fonts");
+/** @type {import('next').NextConfig} */
+export default {
+  reactStrictMode: false,
 
-const nextConfig = {
-	env: {
-		GMAPS_API_KEY: process.env.GMAPS_API_KEY,
-		AWS_USER_KEY_ID: process.env.AWS_USER_KEY_ID,
-		AWS_USER_SECRET: process.env.AWS_USER_SECRET,
-		XRDS_SANITY: process.env.XRDS_SANITY
-	},
-	webpack: (config, options) => {
-		// Modify the `config` here
-
-		return config;
-	}
+  async redirects() {
+    return [
+      {
+        source: '/values-and-mission',
+        destination: '/',
+        permanent: true
+      },
+      {
+        source: '/kids-youth',
+        destination: '/',
+        permanent: true
+      }
+    ];
+  }
 };
-
-module.exports = withPlugins([withFonts, [withImages, { ignoreTypes: ["svg"] }]], nextConfig);
