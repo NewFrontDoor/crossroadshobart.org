@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 export default {
   reactStrictMode: false,
+  output: 'export',
+  images: {
+    unoptimized: true
+  },
 
   async redirects() {
     return [

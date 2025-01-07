@@ -1,3 +1,4 @@
+import GoatCounter from 'affordances/GoatCounter';
 import './globals.css';
 import Navigation from './Navigation';
 
@@ -22,9 +23,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Navigation />
-        {children}
+        <main className="flex-1 px-4">{children}</main>
 
         <footer className="text-center leading-4 p-16 mt-32 bg-[#ede7d1]">
           <small>
@@ -33,6 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             25 Tasma St, North Hobart TAS 7000, Australia
           </small>
         </footer>
+        <GoatCounter />
       </body>
     </html>
   );

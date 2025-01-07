@@ -5,19 +5,18 @@ import React from 'react';
 export default function HomePage() {
   return (
     <div className="max-w-2xl m-auto flex flex-col gap-8 px-3">
-      <div>
-        <div className="p-12 mb-6 font-display text-6xl text-center">
-          <h1 className="font-black">
-            <span>
-              Come and <br />
-              meet{' '}
-            </span>
-            <span className="text-teal-500 italic">Jesus</span>
-          </h1>
-        </div>
+      <div className="p-12 pt-8 mb-6 font-display text-6xl text-center">
+        <h1 className="font-black">
+          <span>
+            Come and <br />
+            meet{' '}
+          </span>
+          <span className="text-teal-500 italic">Jesus</span>
+        </h1>
       </div>
       <p>
-        You’re welcome at Crossroads regardless of where you’re from or what you believe. <br />
+        You’re welcome at Crossroads Presbyterian Church regardless of where you’re from or what you
+        believe.
       </p>
       <p>
         We meet Sundays at <strong>4pm. 25 Tasma St, North Hobart</strong>
