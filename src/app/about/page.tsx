@@ -1,8 +1,9 @@
 import Heading from 'affordances/Heading';
-import React from 'react';
-import Image from 'next/image';
+import React, {type ReactNode} from 'react';
+import Image, {type StaticImageData} from 'next/image';
 import Dan from '../../../public/dan.jpg';
 import Lyndal from '../../../public/lyndal.png';
+import Mike from '../../../public/mike.jpg';
 
 export default function ContactUsPage() {
   return (
@@ -34,64 +35,63 @@ export default function ContactUsPage() {
         Christians.
       </p>
       <Heading level="h2">Pastoral Team</Heading>
-      <p>
-        <Image
-          src={Dan}
-          alt="Dan Shepheard"
-          height={128}
-          className="rounded-full float-left mr-4 "
-        />
-        <strong>Dan Shepheard</strong> has been the minister for 17 years. His ministry involves
-        preaching, leading bible discussion groups, and prayer. He is also chairman of our elected
-        elders meeting (session). His special interested is to share the message of Jesus with those
-        who don't normally attend church.
-      </p>
-      <p>
-        <Image
-          src={Lyndal}
-          alt="Lyndal Jolly"
-          height={128}
-          className="rounded-full float-left mr-4 "
-        />
-        <strong>Lyndal Jolly</strong> has been Operations Manager for 4 years. She oversees teams in
-        which the whole church work to see people saved and growing as engaged Christians.
-      </p>
+      <Person src={Dan} name="Dan Shepheard">
+        has been the minister for 17 years. His ministry involves preaching, leading bible
+        discussion groups, and prayer. He is also chairman of our elected elders meeting (session).
+        His special interested is to share the message of Jesus with those who don't normally attend
+        church.
+      </Person>
+      <Person src={Lyndal} name="Lyndal Jolly">
+        has been Operations Manager for 4 years. She oversees teams in which the whole church work
+        to see people saved and growing as engaged Christians.
+      </Person>
+      <Person src={Mike} name="Mike Hall">
+        leads our Next Gen ministries for those aged 0-21yrs old. Mike has many years of experience
+        in youth ministry both in Sydney and Hobart. church.
+      </Person>
 
       <Heading level="h2">Sermons</Heading>
 
       <div className="grid grid-cols-2 gap-5 justify-items-center text-center">
-        <figure>
-          <figcaption className="mb-2">Isaiah 9</figcaption>
-          <audio
-            controls
-            src="https://sermons.crossroadshobart.org/H3BHqYQm3XN0XgXZ-2024-11-24.mp3"
-          />
-        </figure>
-
-        <figure>
-          <figcaption className="mb-2">Giving Up All For Jesus</figcaption>
-          <audio
-            controls
-            src="https://sermons.crossroadshobart.org/ixQUPcPdzMWbfDGQ-2024-10-27.mp3"
-          />
-        </figure>
-
-        <figure>
-          <figcaption className="mb-2">Luke 4:14–22</figcaption>
-          <audio
-            controls
-            src="https://sermons.crossroadshobart.org/l4UqhZXGPIG19Rd4-2024-10-13.mp3"
-          />
-        </figure>
-
-        <figure>
-          <figcaption className="mb-2">Hebrews 11</figcaption>
-          <audio
-            controls
-            src="https://sermons.crossroadshobart.org/UvmedajBX3nUHtrl-2024-08-04.mp3"
-          />
-        </figure>
+        <Sermon src="https://sermons.crossroadshobart.org/H3BHqYQm3XN0XgXZ-2024-11-24.mp3">
+          Isaiah 9
+        </Sermon>
+        <Sermon src="https://sermons.crossroadshobart.org/ixQUPcPdzMWbfDGQ-2024-10-27.mp3">
+          Giving Up All For Jesus
+        </Sermon>
+        <Sermon src="https://sermons.crossroadshobart.org/l4UqhZXGPIG19Rd4-2024-10-13.mp3">
+          Luke 4:14–22
+        </Sermon>
+        <Sermon src="https://sermons.crossroadshobart.org/UvmedajBX3nUHtrl-2024-08-04.mp3">
+          Hebrews 11
+        </Sermon>
       </div>
     </div>
+  );
+}
+
+function Person(props: {src: StaticImageData; name: string; children: ReactNode}) {
+  return (
+    <p className="flex items-center">
+      <Image
+        src={props.src}
+        alt={props.name}
+        height={128}
+        className="rounded-full float-left mr-4"
+      />
+      <span>
+        <strong>{props.name} </strong>
+        {props.children}
+      </span>
+    </p>
+  );
+}
+
+function Sermon(props: {src: string; children: ReactNode}) {
+  return (
+    <figure>
+      <figcaption className="mb-2">{props.children}</figcaption>
+      <audio controls src={props.src} />
+    </figure>
   );
 }
