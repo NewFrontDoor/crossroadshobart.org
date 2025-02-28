@@ -5,6 +5,7 @@ import React from 'react';
 export default function HomePage() {
   return (
     <div className="max-w-2xl m-auto flex flex-col gap-8 px-3">
+      <title>Foo Bar</title>
       <div className="p-12 pt-8 mb-6 font-display text-6xl text-center">
         <h1 className="font-black">
           <span>

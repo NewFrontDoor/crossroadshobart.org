@@ -8,8 +8,11 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Crossroads Hobart',
-  description: ''
+  title: {
+    template: '%s — Crossroads Presbyterian Church',
+    default: 'Crossroads Presbyterian Church'
+  },
+  description: `We are an afternoon church in the city of Hobart. Our message is Jesus Christ and finding God through him. Kid's, Youth and Young Adult Ministries are important to us.`
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -22,6 +25,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Navigation />
