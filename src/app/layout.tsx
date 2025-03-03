@@ -35,8 +35,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 <Navigation />
                 <main className="flex-1 px-4">{children}</main>
 
-                <footer className="leading-4 p-16 mt-32 bg-[#ede7d1]">
-                    <div className="max-w-2xl m-auto grid grid-cols-5 text-sm items-center">
+                <footer className="leading-4 p-6 md:p-16 mt-32 bg-[#ede7d1]">
+                    <div className="max-w-2xl m-auto flex flex-col gap-2 justify-start md:grid grid-cols-5 text-sm md:items-center">
                         <span className="col-span-3">
                             © Crossroads Presbyterian Church {new Date().getFullYear()}
                             <br />

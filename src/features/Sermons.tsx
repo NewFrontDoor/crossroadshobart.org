@@ -2,7 +2,7 @@ import type {ReactElement, ReactNode} from 'react';
 
 export default function Sermons(): ReactElement {
     return (
-        <div className="grid grid-cols-2 gap-5 justify-items-center text-center">
+        <div className="flex flex-col md:grid grid-cols-2 gap-5 justify-items-center text-center">
             <Sermon src="https://sermons.crossroadshobart.org/H3BHqYQm3XN0XgXZ-2024-11-24.mp3">
                 Isaiah 9
             </Sermon>
@@ -21,7 +21,7 @@ export default function Sermons(): ReactElement {
 
 function Sermon(props: {src: string; children: ReactNode}) {
     return (
-        <figure>
+        <figure className="flex flex-col items-center justify-center">
             <figcaption className="mb-2">{props.children}</figcaption>
             <audio controls src={props.src} />
         </figure>
