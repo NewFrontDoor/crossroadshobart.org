@@ -56,7 +56,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                         <div>
                             <strong>Policies</strong>
                             <ul>
-                                <li>Safe Ministry</li>
+                                <li>&nbsp;</li>
                                 <li>&nbsp;</li>
                             </ul>
                         </div>
