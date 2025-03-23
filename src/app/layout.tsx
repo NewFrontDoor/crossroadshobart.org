@@ -29,9 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body className="flex flex-col min-h-screen">
-        <div className="bg-red-500 text-white text-center p-2">
-          There will be no Sunday service on March 23 due to church camp.
-        </div>
+        <NoCamp hide={true} />
         <Navigation />
         <main className="flex-1 px-4">{children}</main>
 
@@ -65,5 +63,15 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <GoatCounter />
       </body>
     </html>
+  );
+}
+
+function NoCamp(props: {hide: boolean}) {
+  if (props.hide) return null;
+
+  return (
+    <div className="bg-red-500 text-white text-center p-2">
+      There will be no Sunday service on March 23 due to church camp.
+    </div>
   );
 }
