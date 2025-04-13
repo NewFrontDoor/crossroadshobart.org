@@ -5,7 +5,7 @@ export default function Heading(props: {
   switch (props.level) {
     case 'h0':
       return (
-        <h1 className="p-16 mb-16 font-display text-7xl tracking-[-6px] font-normal text-center">
+        <h1 className="md:p-16 mb-16 font-display text-5xl md:text-7xl tracking-tighter md:tracking-[-6px] font-normal text-center">
           {props.children}
         </h1>
       );

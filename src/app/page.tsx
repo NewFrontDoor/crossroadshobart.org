@@ -1,16 +1,44 @@
 import Heading from 'affordances/Heading';
+import Image from 'affordances/Image';
 import ContactUs from 'features/ContactUs';
+import img1 from '../../public/images/1.jpg';
+import img2 from '../../public/images/2.jpg';
+import img3 from '../../public/images/3.jpg';
+import img4 from '../../public/images/4.jpg';
+import img5 from '../../public/images/5.jpg';
+import img6 from '../../public/images/6.jpg';
+import img7 from '../../public/images/7.jpg';
+import img8 from '../../public/images/8.jpg';
+//<Image src={img8} alt="Dan preaching" />
+//<Image src={img4} alt="Dan preaching" />
+//<Image src={img5} alt="Dan preaching" />
+//<Image src={img6} alt="Dan preaching" />
+//<Image src={img7} alt="Dan preaching" />
 
 import React from 'react';
+import Wrapper from 'affordances/Wrapper';
+
+function ImageWrapper(props: {children: any}) {
+  return (
+    <div className="flex gap-4 my-8 justify-center overflow-hidden w-dvw ml-[50%] transform-[translate3d(-50%,_0,_0)]">
+      {props.children}
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
-    <div className="max-w-2xl m-auto flex flex-col gap-8 px-3">
-      <div className="p-12 pt-8 mb-6 font-display text-6xl font-normal text-center">
+    <Wrapper>
+      <div className="py-12 px-8 pt-8 mb-6 font-display text-6xl font-normal text-center">
         <Heading level="h0">
           Come and <br />
           meet <span className="text-teal-500 italic">Jesus</span>
         </Heading>
+        <ImageWrapper>
+          <Image src={img2} alt="" />
+          <Image src={img1} alt="" />
+          <Image src={img8} alt="" />
+        </ImageWrapper>
       </div>
       <p>
         You’re welcome at Crossroads Presbyterian Church regardless of where you’re from or what you
@@ -49,10 +77,16 @@ export default function HomePage() {
           shared meal.
         </li>
       </ul>
+      <ImageWrapper>
+        <Image src={img3} alt="" />
+        <Image src={img4} alt="" />
+        <Image src={img5} alt="" />
+        <Image src={img6} alt="" />
+      </ImageWrapper>
 
       <section>
         <ContactUs />
       </section>
-    </div>
+    </Wrapper>
   );
 }
