@@ -7,7 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "watch": "next dev",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "preview": "npm run worker:build && opennextjs-cloudflare preview",
+    "deploy": "npm run worker:build && opennextjs-cloudflare deploy",
+    "upload": "npm run worker:build && opennextjs-cloudflare upload",
+    "worker:build": "npm run generate && opennextjs-cloudflare build"
   },
   "dependencies": {
     "classnames": "^2.5.1",
@@ -18,17 +23,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@opennextjs/cloudflare": "^1.0.2",
     "@types/node": "^22.10.1",
     "@types/react": "^18.2.48",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wrangler": "^4.14.4"
   },
+  "packageManager": "npm@11.3.0",
   "postcss": {
     "plugins": {
-      "tailwindcss": {},
-      "autoprefixer": {}
+      "autoprefixer": {},
+      "tailwindcss": {}
     }
   }
 }
