@@ -13,7 +13,7 @@ export default function Image(props: {
     <NextImage
       alt={props.alt}
       height={props.height ?? 400}
-      className={classNames('rounded-xl lg:rounded-3xl h-32 lg:h-auto', props.className)}
+      className={classNames('rounded-xl lg:rounded-3xl h-32 md:h-64 lg:h-auto', props.className)}
       src={props.src}
     />
   );
