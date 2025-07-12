@@ -3,8 +3,8 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'sans-serif'],
-      display: ['Fraunces', 'sans-serif']
+      sans: ['Poppins', 'sans-serif'],
+      display: ['Poppins', 'sans-serif']
     },
     extend: {}
   },

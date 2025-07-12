@@ -1,17 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '../../public/header.png';
 import Logo from '../../public/crossroads.svg';
 
 export default function Navigation() {
   return (
     <header>
-      <Image
-        src={Header}
-        alt="Picture of the Hobart"
-        className="object-center object-cover opacity-30 w-full h-96 md:h-72 absolute -z-10 hidden md:block"
-      />
-      <div className="flex flex-col md:flex-row items-center gap-4 max-w-2xl justify-between m-auto p-4">
+      <div className="flex flex-col md:flex-row items-center gap-4  justify-between m-auto py-4 p-8">
         <Link href="/">
           <Image alt="Crossroads Presbyterian Church Logo" src={Logo} />
         </Link>
