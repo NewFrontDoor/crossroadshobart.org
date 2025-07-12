@@ -9,11 +9,14 @@ import img5 from '../../public/images/5.jpg';
 import img6 from '../../public/images/6.jpg';
 import img7 from '../../public/images/7.jpg';
 import img8 from '../../public/images/8.jpg';
-//<Image src={img8} alt="Dan preaching" />
-//<Image src={img4} alt="Dan preaching" />
-//<Image src={img5} alt="Dan preaching" />
-//<Image src={img6} alt="Dan preaching" />
-//<Image src={img7} alt="Dan preaching" />
+import img9 from '../../public/images/9.jpg';
+import img11 from '../../public/images/11.jpg';
+import img12 from '../../public/images/12.jpg';
+import img13 from '../../public/images/13.jpg';
+import img16 from '../../public/images/16.jpg';
+import img17 from '../../public/images/17.jpg';
+import img18 from '../../public/images/18.jpg';
+import img21 from '../../public/images/21.jpg';
 
 import React from 'react';
 import Wrapper from 'affordances/Wrapper';
@@ -35,9 +38,9 @@ export default function HomePage() {
           meet <span className="text-teal-500 italic">Jesus</span>
         </Heading>
         <ImageWrapper>
-          <Image src={img2} alt="" />
-          <Image src={img1} alt="" />
-          <Image src={img8} alt="" />
+          <Image src={img17} alt="" height={400} className="h-32 lg:h-auto" />
+          <Image src={img1} alt="" className="h-32 lg:h-auto" />
+          <Image src={img8} alt="" className="h-32 lg:h-auto" />
         </ImageWrapper>
       </div>
       <p>
@@ -54,6 +57,13 @@ export default function HomePage() {
         Jesus really, actually, lived, died and came back to life. As we live our normal Christian
         lives in Hobart, we trust that God will use us to show more people his love.
       </p>
+
+      <ImageWrapper>
+        <Image src={img7} alt="" width={600} height={400} />
+        <Image src={img18} alt="" width={600} height={400} />
+        <Image src={img9} alt="" />
+        <Image src={img11} alt="" />
+      </ImageWrapper>
 
       <Heading level="h2">Other ministries</Heading>
 
@@ -79,14 +89,20 @@ export default function HomePage() {
       </ul>
       <ImageWrapper>
         <Image src={img3} alt="" />
-        <Image src={img4} alt="" />
-        <Image src={img5} alt="" />
+        <Image src={img21} alt="" />
         <Image src={img6} alt="" />
       </ImageWrapper>
 
       <section>
         <ContactUs />
       </section>
+
+      <ImageWrapper>
+        <Image src={img16} alt="" />
+        <Image src={img13} alt="" />
+        <Image src={img12} alt="" />
+        <Image src={img2} alt="" />
+      </ImageWrapper>
     </Wrapper>
   );
 }
