@@ -15,12 +15,14 @@
     "worker:build": "npm run generate && opennextjs-cloudflare build"
   },
   "dependencies": {
+    "@player.style/tailwind-audio": "^0.0.12",
     "@tailwindcss/postcss": "^4.1.3",
     "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
     "next": "^15.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-player": "^0.0.11"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -40,4 +42,3 @@
     }
   }
 }
-
