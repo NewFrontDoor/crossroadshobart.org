@@ -20,13 +20,6 @@ export default function Sermons(): ReactElement {
   );
 }
 
-function Sermon(props: {src: string; children: ReactNode}) {
-  return (
-    <div className="block">
-      <div className="mb-2">{props.children}</div>
-      <div>
-        <Player src={props.src} />
-      </div>
-    </div>
-  );
+function Sermon(props: {src: string; children: string}) {
+  return <Player src={props.src} title={props.children} />;
 }
