@@ -12,6 +12,7 @@ export default function Navigation() {
         <div className="flex items-center gap-6">
           <Link href="/">Sunday Visit</Link>
           <Link href="/about">About</Link>
+          <Link href="/jesus">Find out about Jesus</Link>
           <Link href="/contact-us">Contact Us</Link>
         </div>
       </div>
