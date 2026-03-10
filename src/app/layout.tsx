@@ -1,7 +1,7 @@
 import GoatCounter from 'affordances/GoatCounter';
 import './globals.css';
-import Navigation from './Navigation';
 import Link from 'next/link';
+import Navigation from './Navigation';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -29,7 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body className="flex flex-col min-h-screen">
-        <NoCamp hide={true} />
+        <NoCamp hide={false} />
         <Navigation />
         <main className="flex-1 px-4">{children}</main>
 
@@ -71,7 +71,7 @@ function NoCamp(props: {hide: boolean}) {
 
   return (
     <div className="bg-red-500 text-white text-center p-2">
-      There will be no Sunday service on March 23 due to church camp.
+      There will be no Sunday service on March 22 due to church camp.
     </div>
   );
 }
