@@ -29,7 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body className="flex flex-col min-h-screen">
-        <NoCamp hide={false} />
+        <NoCamp hide={true} />
         <Navigation />
         <main className="flex-1 px-4">{children}</main>
 
