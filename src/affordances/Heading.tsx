@@ -1,6 +1,8 @@
+import type {ReactNode} from 'react';
+
 export default function Heading(props: {
   level: 'h0' | 'h1' | 'h2' | 'h3';
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   switch (props.level) {
     case 'h0':

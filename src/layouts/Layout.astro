@@ -1,0 +1,69 @@
+---
+import '../styles/globals.css';
+import GoatCounter from '../affordances/GoatCounter';
+import Navigation from '../components/Navigation';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Crossroads Presbyterian Church',
+  description = "We are an afternoon church in the city of Hobart. Our message is Jesus Christ and finding God through him. Kid's, Youth and Young Adult Ministries are important to us."
+} = Astro.props;
+
+const titleString = title === 'Crossroads Presbyterian Church' ? title : `${title} — Crossroads Presbyterian Church`;
+---
+
+<!doctype html>
+<html lang="en" class="bg-orange-50 text-sky-950 font-sans font-normal text-lg leading-6">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{titleString}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Navigation />
+    <main class="flex-1 px-4">
+      <slot />
+    </main>
+
+    <footer class="leading-4 p-6 md:p-16 mt-32 bg-[#ede7d1]">
+      <div class="max-w-2xl m-auto flex flex-col gap-2 justify-start md:grid grid-cols-5 text-sm md:items-center">
+        <span class="col-span-3">
+          &copy; Crossroads Presbyterian Church {new Date().getFullYear()}
+          <br />
+          25 Tasma St, North Hobart TAS 7000, Australia
+        </span>
+        <div>
+          <strong>Resources</strong>
+          <ul>
+            <li>
+              <a href="/giving" class="underline text-blue-500 visited:text-purple-500">Giving</a>
+            </li>
+            <li>
+              <a href="/sermons" class="underline text-blue-500 visited:text-purple-500">Sermons</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <strong>Policies</strong>
+          <ul>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <GoatCounter client:load />
+  </body>
+</html>

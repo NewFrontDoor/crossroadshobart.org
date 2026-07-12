@@ -1,12 +1,11 @@
-import Heading from 'affordances/Heading';
-import React from 'react';
+import Heading from '../affordances/Heading';
 
 export default function ContactUs() {
   return (
     <div className="flex flex-col gap-4">
       <Heading level="h2">Contact Us</Heading>
       <p>
-        We’d love to get to know you and keep you posted about what’s happening in our church
+        We'd love to get to know you and keep you posted about what's happening in our church
         community. Please fill out our{' '}
         <a
           className="text-blue-500 visited:purple-500"

@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Heading from '../affordances/Heading';
+import Sermons from '../features/Sermons';
+---
+
+<Layout title="Sermons">
+  <div class="max-w-2xl m-auto flex flex-col gap-8">
+    <Heading level="h1">Sermons</Heading>
+    <Sermons client:load />
+  </div>
+</Layout>

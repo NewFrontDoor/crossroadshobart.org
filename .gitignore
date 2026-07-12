@@ -1,20 +1,16 @@
 .dev.vars
 .DS_Store
-.env.development.local
+.env
 .env.local
-.env.production.local
-.env.test.local
-.next
-.open-next
-.pnp
-.pnp.js
-.vercel
-.wrangler
-*.pem
-build
-cloudflare-env.d.ts
-coverage
-next-env.d.ts
+.env.production
+.env.test
 node_modules
 npm-debug.log*
-out
+*.pem
+
+# Astro
+.astro/
+dist/
+
+# pnpm
+.pnpm-store/

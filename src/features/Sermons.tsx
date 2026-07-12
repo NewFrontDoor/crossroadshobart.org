@@ -1,7 +1,6 @@
-import type {ReactElement, ReactNode} from 'react';
 import Player from '../affordances/Player';
 
-export default function Sermons(): ReactElement {
+export default function Sermons() {
   return (
     <div className="flex flex-col gap-5 text-center">
       <Sermon src="https://sermons.crossroadshobart.org/H3BHqYQm3XN0XgXZ-2024-11-24.mp3">
@@ -11,7 +10,7 @@ export default function Sermons(): ReactElement {
         Giving Up All For Jesus
       </Sermon>
       <Sermon src="https://sermons.crossroadshobart.org/l4UqhZXGPIG19Rd4-2024-10-13.mp3">
-        Luke 4:14–22
+        Luke 4:14-22
       </Sermon>
       <Sermon src="https://sermons.crossroadshobart.org/UvmedajBX3nUHtrl-2024-08-04.mp3">
         Hebrews 11

@@ -1,6 +1,6 @@
 'use client';
 import {PauseIcon, PlayIcon, SpeakerWaveIcon, SpeakerXMarkIcon} from '@heroicons/react/20/solid';
-import {ReactNode, useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 function Player(props: {
   src: string;

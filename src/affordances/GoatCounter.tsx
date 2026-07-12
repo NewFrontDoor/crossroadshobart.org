@@ -1,22 +1,28 @@
 'use client';
-import Script from 'next/script';
 import {useEffect} from 'react';
-import {usePathname} from 'next/navigation';
 
 export default function GoatCounter() {
-  const path = usePathname();
   useEffect(() => {
-    if (path) {
+    const script = document.createElement('script');
+    script.async = true;
+    script.dataset.goatcounter = 'https://crossroads.goatcounter.com/count';
+    script.src = 'https://gc.zgo.at/count.js';
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
       // @ts-ignore
-      window?.goatcounter?.count?.({path});
-    }
-  }, [path]);
-  return (
-    <Script
-      async
-      data-goatcounter="https://crossroads.goatcounter.com/count"
-      src="https://gc.zgo.at/count.js"
-      strategy="afterInteractive"
-    />
-  );
+      window?.goatcounter?.count?.({path: window.location.pathname + window.location.search});
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
+  }, []);
+
+  return null;
 }

@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Heading from '../affordances/Heading';
+import Sermons from '../features/Sermons';
+
+interface PersonProps {
+  src: string;
+  name: string;
+  children: any;
+}
+---
+
+<Layout title="About">
+  <div class="max-w-2xl m-auto flex flex-col gap-8">
+    <Heading level="h1">Who We Are</Heading>
+    <p>
+      Crossroads is a group of individuals — singles, couples, and families — who believe that
+      Jesus really, actually, lived, died and came back to life. As we live our normal Christian
+      lives in Hobart, we trust that God will use us to show more people his love.
+    </p>
+    <Heading level="h2">Our Beliefs</Heading>
+
+    <p>
+      <strong>Saved - </strong>
+      Hobart is a beautiful place, but, sadly, even here things aren't right. Thankfully, God is
+      not far from each one of us. When he entered our world, Jesus made a way for us to draw near
+      to God personally through forgiveness and new life.
+    </p>
+
+    <p>
+      <strong>Growing - </strong>
+      Jesus now is with us by his Spirt. We want to be growing in our relationship with God and
+      each other.
+    </p>
+
+    <p>
+      <strong>Engaged - </strong>
+      As we wait for Jesus' return, Christians have a remarkable opportunity to be both salt and
+      light in the world.
+    </p>
+
+    <Heading level="h2">Pastoral Team</Heading>
+    <p class="flex items-center">
+      <img src="/dan.jpg" alt="Dan Shepheard" class="rounded-full float-left mr-4 h-32 w-auto" />
+      <span>
+        <strong>Dan Shepheard </strong>
+        has been the minister for 17 years. His ministry involves preaching, leading bible
+        discussion groups, and prayer. He is also chairman of our elected elders meeting (session).
+        His special interested is to share the message of Jesus with those who don't normally attend
+        church.
+      </span>
+    </p>
+    <p class="flex items-center">
+      <img src="/lyndal.png" alt="Lyndal Jolly" class="rounded-full float-left mr-4 h-32 w-auto" />
+      <span>
+        <strong>Lyndal Jolly </strong>
+        has been Operations Manager for 4 years. She oversees teams in which the whole church work
+        to see people saved and growing as engaged Christians.
+      </span>
+    </p>
+    <p class="flex items-center">
+      <img src="/mike.jpg" alt="Mike Hall" class="rounded-full float-left mr-4 h-32 w-auto" />
+      <span>
+        <strong>Mike Hall </strong>
+        leads our Next Gen ministries for those aged 0-21yrs old. Mike has many years of experience
+        in youth ministry both in Sydney and Hobart.
+      </span>
+    </p>
+
+    <Heading level="h2">Sermons</Heading>
+
+    <Sermons client:load />
+  </div>
+</Layout>
