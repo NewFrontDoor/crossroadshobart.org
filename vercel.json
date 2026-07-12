@@ -1,0 +1,9 @@
+{
+  "framework": "astro",
+  "buildCommand": "astro build",
+  "outputDirectory": "dist",
+  "redirects": [
+    {"source": "/values-and-mission", "destination": "/", "permanent": true},
+    {"source": "/kids-youth", "destination": "/", "permanent": true}
+  ]
+}
