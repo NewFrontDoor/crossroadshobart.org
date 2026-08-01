@@ -2,11 +2,12 @@
 
 ```sh
 # Local development
-$ npm run dev
+$ pnpm dev
 
 # Local Preview of Cloudflare Worker
-$ npm run preview
+$ pnpm run preview
 
 # Delpoy to Cloudlfare
-$ npm run deploy
+$ pnpm run deploy
 ```
+
