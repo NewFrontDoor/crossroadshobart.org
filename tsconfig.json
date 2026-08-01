@@ -9,5 +9,6 @@
       "@/components/*": ["src/components/*"],
       "@/lib/*": ["src/lib/*"]
     }
-  }
+  },
+  "include": ["./worker-configuration.d.ts"]
 }
