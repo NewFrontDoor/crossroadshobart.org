@@ -8,7 +8,8 @@ export default function Navigation() {
         <div className="flex items-center gap-6">
           <a href="/">Sunday Visit</a>
           <a href="/about">About</a>
-          <a href="/jesus">Find out about Jesus</a>
+          <a href="/discover">Discover Jesus</a>
+          {/* <a href="/jesus">Find out about Jesus</a> */}
           <a href="/contact-us">Contact Us</a>
         </div>
       </div>

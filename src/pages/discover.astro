@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const description = "Join us for a five-week course to discover Jesus. Starts: Salamanca Arts Centre. Wednesday 19 August 2026, 7PM.";
+---
+
+<Layout title="Discover Jesus" description={description}>
+  {/* Hero */}
+  <section class="mt-3 rounded-2xl bg-[#0f3d3a] text-[#fff7ed]">
+    <div class="max-w-2xl mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center gap-10">
+      <div class="relative w-64 md:w-80 lg:w-96">
+        <img
+          src="/crown-of-thorns.png"
+          alt="Crown of thorns"
+          class="w-full h-auto"
+          style="filter: brightness(0.4)"
+        />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <h1
+            class="font-display text-5xl md:text-7xl lg:text-8xl tracking-tighter text-center text-white"
+          >
+            Discover Jesus
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Date info */}
+  <section class="my-4 px-6 py-16 md:py-24">
+    <div class="flex flex-col items-center text-center gap-5">
+      <p class="text-xl leading-relaxed">
+        Join us for a five-week course to:
+      </p>
+      <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm font-semibold tracking-[0.15em] uppercase text-teal-700">
+        <span>Discover Truth</span>
+        <span class="text-teal-400">/</span>
+        <span>Discover Hope</span>
+        <span class="text-teal-400">/</span>
+        <span>Discover Life</span>
+      </div>
+      <div class="font-display text-4xl md:text-5xl tracking-tight">
+        Wednesday 19 August 2026, 7PM
+      </div>
+      <div class="text-lg text-sky-900/80">
+        Starts: Salamanca Arts Centre
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="rounded-2xl bg-[#0f3d3a] text-[#fff7ed]">
+    <div class="max-w-2xl mx-auto px-6 py-16 md:py-24 flex flex-col gap-5">
+      <p class="text-xl leading-relaxed text-[#fff7ed]/90">
+        Interested?{' '}
+        <a
+          class="underline underline-offset-4 hover:text-white transition-colors"
+          href="mailto:info@crossroadshobart.org"
+        >
+          info@crossroadshobart.org
+        </a>
+      </p>
+      <p class="text-[#fff7ed]/90">
+        Check out the Discover course online{' '}
+        <a
+          class="underline underline-offset-4 hover:text-white transition-colors"
+          href="https://matthiasmedia.com.au/pages/discover-videos"
+        >
+          here
+        </a>
+      </p>
+    </div>
+  </section>
+</Layout>
